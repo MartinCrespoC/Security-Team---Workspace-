@@ -32,7 +32,7 @@ show_help() {
     echo -e "${PURPLE}"
     cat << "BANNER"
 ╔═══════════════════════════════════════════════════════════════════════════════╗
-║   🛡️ SECURITY TEAM ORCHESTRATOR - Comandos Disponibles                       ║
+║   🛡️ SECURITY TEAM by ConcordIA / TITAN - Commands                           ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 BANNER
     echo -e "${NC}"
@@ -203,7 +203,7 @@ call_team() {
 # Estado actual
 show_status() {
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════${NC}"
-    echo -e "${WHITE}  🛡️ ESTADO DEL SECURITY TEAM WORKSPACE${NC}"
+    echo -e "${WHITE}  🛡️ SECURITY TEAM by ConcordIA / TITAN${NC}"
     echo -e "${PURPLE}═══════════════════════════════════════════════════════════════════${NC}"
     echo ""
     echo -e "  ${CYAN}Workspace:${NC} $WORKSPACE_ROOT"

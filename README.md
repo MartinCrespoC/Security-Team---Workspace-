@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Multi--Agent-Orchestration-purple?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Multi-Agent"/>
 </p>
 
-<h1 align="center">🛡️ Security Team Workspace</h1>
+<h1 align="center">🛡️ Security Team by ConcordIA / TITAN</h1>
 
 <p align="center">
   <strong>The first cybersecurity framework with 7 specialized AI agent teams working in parallel with isolated contexts</strong>
@@ -31,13 +31,13 @@
 
 ---
 
-## 🎯 What is Security Team Workspace?
+## 🎯 What is Security Team by ConcordIA / TITAN?
 
-**Security Team Workspace** is a revolutionary framework that orchestrates **7 specialized AI security teams**. Each team operates with its own isolated context, but they can communicate and collaborate in real-time to execute complex security operations.
+**Security Team by ConcordIA / TITAN** is a revolutionary framework that orchestrates **7 specialized AI security teams**. Each team operates with its own isolated context, but they can communicate and collaborate in real-time to execute complex security operations.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        🛡️ SECURITY TEAM ORCHESTRATOR                        │
+│                   🛡️ SECURITY TEAM by ConcordIA / TITAN                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │   🔴 RedTeam    🔵 BlueTeam    🟣 PurpleTeam    🟢 GreenTeam               │

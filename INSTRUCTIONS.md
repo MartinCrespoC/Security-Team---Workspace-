@@ -1,6 +1,6 @@
-# 🛡️ Security Team Workspace - Quick Start Guide
+# 🛡️ Security Team by ConcordIA / TITAN - Quick Start Guide
 
-Welcome to the **Security Team Workspace**! This guide will help you run your first autonomous security operation.
+Welcome to **Security Team by ConcordIA / TITAN**! This guide will help you run your first autonomous security operation.
 
 ---
 

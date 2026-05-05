@@ -55,7 +55,7 @@ generate_executive_summary() {
 
 ## Proyecto: $project
 **Fecha:** $(date '+%Y-%m-%d %H:%M:%S')
-**Generado por:** Security Team Workspace
+**Generado por:** Security Team by ConcordIA / TITAN
 
 ---
 
@@ -99,7 +99,7 @@ Este documento presenta un resumen de alto nivel de la evaluación de seguridad 
 
 ---
 
-*Reporte generado automáticamente por Security Team Workspace*
+*Reporte generado automáticamente por Security Team by ConcordIA / TITAN*
 EOF
 }
 
@@ -362,7 +362,7 @@ generate_full_report() {
 
 ---
 
-*Reporte generado por Security Team Workspace*
+*Reporte generado por Security Team by ConcordIA / TITAN*
 *Clasificación: CONFIDENCIAL*
 EOF
 }
