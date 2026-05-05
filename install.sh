@@ -695,6 +695,22 @@ README
 finalize_installation() {
     section "✅ FASE 7: FINALIZACIÓN"
     
+    # Install secteam globally
+    echo -e "${CYAN}[*] Installing secteam command globally...${NC}"
+    chmod +x "$WORKSPACE_ROOT/secteam"
+    
+    # Create symlink in /usr/local/bin
+    if [ -w /usr/local/bin ] || [ "$EUID" -eq 0 ]; then
+        ln -sf "$WORKSPACE_ROOT/secteam" /usr/local/bin/secteam
+        echo -e "${GREEN}[✓] secteam installed globally - use 'secteam' from anywhere${NC}"
+    else
+        if sudo ln -sf "$WORKSPACE_ROOT/secteam" /usr/local/bin/secteam 2>/dev/null; then
+            echo -e "${GREEN}[✓] secteam installed globally - use 'secteam' from anywhere${NC}"
+        else
+            echo -e "${YELLOW}[!] Run: sudo ln -sf $WORKSPACE_ROOT/secteam /usr/local/bin/secteam${NC}"
+        fi
+    fi
+    
     # Crear archivo de estado
     cat > "$WORKSPACE_ROOT/.installed" << EOF
 {
