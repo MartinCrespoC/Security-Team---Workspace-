@@ -57,6 +57,67 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
+## 🚀 FULL OPERATION MODE (Auto-Pilot)
+
+**La característica más poderosa:** La IA toma control total y ejecuta operaciones de seguridad completas de forma autónoma.
+
+```
+Usuario: "Full operation contra example.com"
+
+🤖 IA: ¡Entendido! Tomando control total...
+
+═══ FASE 1: RECONOCIMIENTO ═══
+🔴 [RedTeam] Ejecutando reconocimiento...
+> nmap -sV -sC example.com
+> subfinder -d example.com
+> nuclei -u example.com
+[+] 3 subdominios encontrados
+[+] Puertos: 22, 80, 443, 3306
+
+═══ FASE 2: ANÁLISIS DE VULNERABILIDADES ═══
+🔴 [RedTeam] Escaneando vulnerabilidades...
+[CRITICAL] SQLi encontrado en /api/users?id=
+
+═══ FASE 3: EXPLOTACIÓN ═══
+🔴 [RedTeam] Explotando SQLi...
+> sqlmap -u "example.com/api/users?id=1" --dump
+[+] Base de datos dumpeada: 1,547 usuarios
+
+═══ FASE 4: ANÁLISIS DEFENSIVO ═══
+🔵 [BlueTeam] Analizando detecciones...
+[!] WAF no bloqueó el ataque
+[!] Sin alertas en logs
+
+═══ FASE 5: VALIDACIÓN ═══
+🟣 [PurpleTeam] Mapeando a MITRE ATT&CK...
+- T1190: Exploit Public-Facing Application
+- T1059: Command Injection
+
+═══ FASE 6: REPORTE ═══
+📊 Generando mega reporte...
+[+] Reporte: reports/example-com-20240504/
+
+✅ OPERACIÓN COMPLETADA
+```
+
+### Triggers para Full Operation:
+- `"Full operation contra [target]"`
+- `"Pentest completo de [target]"`
+- `"Hackea [target]"`
+- `"Ataca [target]"`
+- `"Red team full contra [target]"`
+
+### La IA Decide Autónomamente:
+| Situación | Decisión de la IA |
+|-----------|-------------------|
+| Puerto 80/443 abierto | → Escaneo web completo |
+| SQLi detectado | → Explotación inmediata |
+| Acceso obtenido | → Post-explotación |
+| WAF detectado | → Técnicas de bypass |
+| Sin vulns web | → Pivotar a otros vectores |
+
+---
+
 ## ✨ Características
 
 ### 🚀 Multi-Agente Paralelo
@@ -64,6 +125,7 @@
 - **Contextos completamente aislados** por proyecto y equipo
 - **Comunicación segura** entre equipos via `secteam share`
 - **Orquestación inteligente** que asigna tareas al equipo correcto
+- **FULL OPERATION MODE** - La IA ejecuta todo automáticamente
 
 ### 🎯 Capacidades Ofensivas (RedTeam)
 - Reconocimiento automatizado (subdominios, puertos, servicios)
