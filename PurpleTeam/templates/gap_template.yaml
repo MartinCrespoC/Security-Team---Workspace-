@@ -1,0 +1,38 @@
+---
+# Template para documentar brechas de detección
+technique_id: "T1055.001"
+technique_name: "Process Injection: DLL Injection"
+tactic: "Defense Evasion"
+gap_type: "no_detection"
+severity: "critical"
+description: "No existe detección para DLL Injection"
+current_coverage: 0
+expected_coverage: 80
+detection_sources_missing:
+  - "sysmon"
+  - "edr"
+  - "sigma"
+recommendations:
+  - "Implementar regla Sigma para CreateRemoteThread"
+  - "Habilitar Sysmon Event 8"
+  - "Configurar alerta EDR para process injection"
+sigma_rule_suggestion: |
+  title: CreateRemoteThread API Call
+  status: experimental
+  logsource:
+      category: create_remote_thread
+      product: windows
+  detection:
+      selection:
+          EventType: CreateRemoteThread
+      condition: selection
+  level: high
+  tags:
+      - attack.defense_evasion
+      - attack.t1055.001
+priority_score: 95
+remediation_status: "pending"
+assigned_to: "blue_team"
+due_date: "2024-01-22"
+created_date: "2024-01-15"
+analyst: "purple_team_lead"

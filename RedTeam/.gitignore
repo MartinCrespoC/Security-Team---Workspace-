@@ -1,0 +1,71 @@
+# Red Team Workspace - .gitignore
+
+# Sensitive data - NEVER commit
+credentials/
+loot/
+*.hash
+*.hashes
+*.creds
+*.password
+*.key
+*.pem
+id_rsa*
+
+# Logs with sensitive info
+logs/*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+*.egg
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compiled exploits
+*.exe
+*.elf
+*.dll
+*.so
+*.bin
+
+# Metasploit
+*.rc.local
+
+# Burp Suite
+*.burp
+
+# Wordlists (too large)
+tools/wordlists/*.txt
+!tools/wordlists/custom_*.txt
+
+# Scan results (can be large)
+recon/active/*.xml
+recon/active/*.gnmap
+
+# Keep directory structure
+!.gitkeep

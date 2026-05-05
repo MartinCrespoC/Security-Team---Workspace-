@@ -1,0 +1,174 @@
+# WHITE TEAM GRC - Framework Control Mappings
+# Cross-reference of common controls across frameworks
+
+mappings:
+  # Access Control
+  - control_name: "Multi-Factor Authentication"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.5"
+      SOC2: "CC6.1"
+      PCI_DSS: "8.4"
+      NIST_CSF: "PR.AC-7"
+      HIPAA: "164.312(d)"
+      GDPR: "Art.32"
+    
+  - control_name: "Access Review"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.5.18"
+      SOC2: "CC6.4"
+      PCI_DSS: "7.2"
+      NIST_CSF: "PR.AC-4"
+      HIPAA: "164.312(a)(1)"
+      GDPR: "Art.32"
+    
+  - control_name: "Privileged Access Management"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.2"
+      SOC2: "CC6.1"
+      PCI_DSS: "7.1"
+      NIST_CSF: "PR.AC-4"
+      HIPAA: "164.312(a)(1)"
+    
+  # Data Protection
+  - control_name: "Data Encryption at Rest"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.24"
+      SOC2: "CC6.7"
+      PCI_DSS: "3.4"
+      NIST_CSF: "PR.DS-1"
+      HIPAA: "164.312(a)(2)(iv)"
+      GDPR: "Art.32"
+    
+  - control_name: "Data Encryption in Transit"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.24"
+      SOC2: "CC6.7"
+      PCI_DSS: "4.1"
+      NIST_CSF: "PR.DS-2"
+      HIPAA: "164.312(e)(1)"
+      GDPR: "Art.32"
+    
+  - control_name: "Data Classification"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.5.12"
+      SOC2: "CC6.1"
+      PCI_DSS: "9.6"
+      NIST_CSF: "ID.AM-5"
+      HIPAA: "164.312(c)(1)"
+      GDPR: "Art.5"
+    
+  # Logging and Monitoring
+  - control_name: "Security Logging"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.15"
+      SOC2: "CC7.2"
+      PCI_DSS: "10.1"
+      NIST_CSF: "DE.CM-1"
+      HIPAA: "164.312(b)"
+    
+  - control_name: "Log Review"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.8.16"
+      SOC2: "CC7.2"
+      PCI_DSS: "10.6"
+      NIST_CSF: "DE.AE-2"
+      HIPAA: "164.308(a)(1)(ii)(D)"
+    
+  # Incident Response
+  - control_name: "Incident Response Plan"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.5.24"
+      SOC2: "CC7.4"
+      PCI_DSS: "12.10"
+      NIST_CSF: "RS.RP-1"
+      HIPAA: "164.308(a)(6)"
+      GDPR: "Art.33"
+    
+  - control_name: "Incident Reporting"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.6.8"
+      SOC2: "CC7.3"
+      PCI_DSS: "12.10.1"
+      NIST_CSF: "RS.CO-2"
+      HIPAA: "164.308(a)(6)(ii)"
+      GDPR: "Art.33"
+    
+  # Vulnerability Management
+  - control_name: "Vulnerability Scanning"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.8"
+      SOC2: "CC7.1"
+      PCI_DSS: "11.2"
+      NIST_CSF: "DE.CM-8"
+      HIPAA: "164.308(a)(1)(ii)(A)"
+    
+  - control_name: "Patch Management"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.8"
+      SOC2: "CC7.1"
+      PCI_DSS: "6.3"
+      NIST_CSF: "PR.IP-12"
+      HIPAA: "164.308(a)(1)(ii)(A)"
+    
+  # Change Management
+  - control_name: "Change Control Process"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.8.32"
+      SOC2: "CC8.1"
+      PCI_DSS: "6.4"
+      NIST_CSF: "PR.IP-3"
+      HIPAA: "164.308(a)(8)"
+    
+  # Backup and Recovery
+  - control_name: "Data Backup"
+    category: "Technical"
+    frameworks:
+      ISO27001: "A.8.13"
+      SOC2: "A1.2"
+      PCI_DSS: "9.5"
+      NIST_CSF: "PR.IP-4"
+      HIPAA: "164.308(a)(7)(ii)(A)"
+    
+  - control_name: "Disaster Recovery"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.5.30"
+      SOC2: "A1.3"
+      PCI_DSS: "12.10.1"
+      NIST_CSF: "RC.RP-1"
+      HIPAA: "164.308(a)(7)"
+    
+  # Security Awareness
+  - control_name: "Security Training"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.6.3"
+      SOC2: "CC1.4"
+      PCI_DSS: "12.6"
+      NIST_CSF: "PR.AT-1"
+      HIPAA: "164.308(a)(5)"
+      GDPR: "Art.39"
+    
+  # Vendor Management
+  - control_name: "Third Party Risk Assessment"
+    category: "Administrative"
+    frameworks:
+      ISO27001: "A.5.19"
+      SOC2: "CC9.2"
+      PCI_DSS: "12.8"
+      NIST_CSF: "ID.SC-2"
+      HIPAA: "164.308(b)(1)"
+      GDPR: "Art.28"

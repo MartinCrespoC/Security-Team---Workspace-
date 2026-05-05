@@ -1,0 +1,217 @@
+# WHITE TEAM GRC - Control Schema
+# JSON Schema for control records
+
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Control Schema"
+description: "Schema for WHITE TEAM GRC control records"
+type: object
+
+required:
+  - id
+  - name
+  - category
+  - implementation_status
+
+properties:
+  id:
+    type: string
+    pattern: "^CTRL-[0-9]+$"
+    description: "Unique control identifier (e.g., CTRL-001)"
+    
+  name:
+    type: string
+    minLength: 3
+    maxLength: 200
+    description: "Control name"
+    
+  description:
+    type: string
+    description: "Detailed control description"
+    
+  category:
+    type: string
+    enum:
+      - technical
+      - administrative
+      - physical
+    description: "Control category"
+    
+  type:
+    type: string
+    enum:
+      - preventive
+      - detective
+      - corrective
+      - compensating
+    description: "Control type"
+    
+  implementation_status:
+    type: string
+    enum:
+      - implemented
+      - partial
+      - planned
+      - not_implemented
+      - not_applicable
+    description: "Current implementation status"
+    
+  effectiveness:
+    type: number
+    minimum: 0
+    maximum: 100
+    description: "Control effectiveness percentage"
+    
+  frameworks:
+    type: object
+    description: "Framework mappings"
+    properties:
+      ISO27001:
+        type: array
+        items:
+          type: string
+      SOC2:
+        type: array
+        items:
+          type: string
+      PCI_DSS:
+        type: array
+        items:
+          type: string
+      NIST_CSF:
+        type: array
+        items:
+          type: string
+      HIPAA:
+        type: array
+        items:
+          type: string
+      GDPR:
+        type: array
+        items:
+          type: string
+          
+  evidence:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+            - screenshot
+            - log
+            - config
+            - document
+            - report
+        path:
+          type: string
+        collected_date:
+          type: string
+          format: date
+    description: "Evidence linked to this control"
+    
+  owner:
+    type: string
+    description: "Control owner"
+    
+  operator:
+    type: string
+    description: "Control operator (who executes it)"
+    
+  frequency:
+    type: string
+    enum:
+      - continuous
+      - daily
+      - weekly
+      - monthly
+      - quarterly
+      - annually
+      - on_demand
+    description: "Control execution frequency"
+    
+  automation_level:
+    type: string
+    enum:
+      - fully_automated
+      - partially_automated
+      - manual
+    description: "Level of automation"
+    
+  last_review:
+    type: string
+    format: date
+    description: "Last review date"
+    
+  next_review:
+    type: string
+    format: date
+    description: "Next scheduled review"
+    
+  last_test:
+    type: string
+    format: date
+    description: "Last test date"
+    
+  test_result:
+    type: string
+    enum:
+      - pass
+      - fail
+      - partial
+      - not_tested
+    description: "Last test result"
+    
+  dependencies:
+    type: array
+    items:
+      type: string
+    description: "Other controls this depends on"
+    
+  risks_mitigated:
+    type: array
+    items:
+      type: string
+    description: "Risk IDs this control mitigates"
+    
+  notes:
+    type: string
+    description: "Additional notes"
+
+examples:
+  - id: "CTRL-001"
+    name: "Multi-Factor Authentication"
+    description: "Require MFA for all user authentication to critical systems"
+    category: "technical"
+    type: "preventive"
+    implementation_status: "implemented"
+    effectiveness: 85
+    frameworks:
+      ISO27001: ["A.8.5"]
+      SOC2: ["CC6.1"]
+      PCI_DSS: ["8.4", "8.4.2"]
+      NIST_CSF: ["PR.AC-7"]
+      HIPAA: ["164.312(d)"]
+    evidence:
+      - id: "EVD-001"
+        type: "screenshot"
+        path: "evidence/screenshots/mfa_config.png"
+        collected_date: "2024-01-15"
+      - id: "EVD-002"
+        type: "report"
+        path: "evidence/documents/mfa_enrollment_report.pdf"
+        collected_date: "2024-01-15"
+    owner: "IT Security Manager"
+    operator: "Identity Team"
+    frequency: "continuous"
+    automation_level: "fully_automated"
+    last_review: "2024-01-15"
+    next_review: "2024-07-15"
+    last_test: "2024-01-10"
+    test_result: "pass"
+    risks_mitigated:
+      - "RISK-2024-001"
+      - "RISK-2024-005"
+    notes: "Using Azure AD MFA with Authenticator app"

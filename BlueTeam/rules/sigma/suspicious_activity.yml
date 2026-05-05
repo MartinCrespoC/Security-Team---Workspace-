@@ -1,0 +1,219 @@
+# BlueTeam-Windsurf Sigma Rules
+# Suspicious Activity Detection
+
+title: Suspicious SSH Brute Force
+id: bt-001
+status: stable
+description: Detects multiple failed SSH login attempts
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection:
+        - 'Failed password'
+        - 'authentication failure'
+    condition: selection | count() > 10
+level: high
+tags:
+    - attack.credential_access
+    - attack.t1110
+---
+title: Successful Login After Multiple Failures
+id: bt-002
+status: stable
+description: Detects successful login after brute force attempt
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: auth
+detection:
+    failed:
+        - 'Failed password'
+    success:
+        - 'Accepted password'
+        - 'Accepted publickey'
+    condition: failed | count() > 5 and success
+level: critical
+tags:
+    - attack.credential_access
+    - attack.t1110
+---
+title: Suspicious Sudo Usage
+id: bt-003
+status: stable
+description: Detects unusual sudo command execution
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection:
+        - 'sudo:'
+        - 'COMMAND='
+    suspicious_commands:
+        - '/bin/bash'
+        - '/bin/sh'
+        - 'chmod 777'
+        - 'wget'
+        - 'curl'
+        - 'nc '
+        - 'ncat'
+    condition: selection and suspicious_commands
+level: medium
+tags:
+    - attack.privilege_escalation
+    - attack.t1548
+---
+title: New User Creation
+id: bt-004
+status: stable
+description: Detects creation of new user accounts
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: auth
+detection:
+    selection:
+        - 'useradd'
+        - 'adduser'
+        - 'new user'
+    condition: selection
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1136
+---
+title: Suspicious Cron Job
+id: bt-005
+status: stable
+description: Detects suspicious cron job creation
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: cron
+detection:
+    selection:
+        - 'crontab'
+        - 'CRON'
+    suspicious:
+        - 'curl'
+        - 'wget'
+        - 'bash -c'
+        - 'python -c'
+        - '/tmp/'
+        - '/dev/shm/'
+    condition: selection and suspicious
+level: high
+tags:
+    - attack.persistence
+    - attack.t1053
+---
+title: Reverse Shell Detection
+id: bt-006
+status: stable
+description: Detects reverse shell execution patterns
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: syslog
+detection:
+    selection:
+        - 'bash -i'
+        - '/dev/tcp/'
+        - 'nc -e'
+        - 'ncat -e'
+        - 'python -c.*socket'
+        - 'perl -e.*socket'
+    condition: selection
+level: critical
+tags:
+    - attack.execution
+    - attack.t1059
+---
+title: Suspicious Process Execution
+id: bt-007
+status: stable
+description: Detects execution of suspicious processes
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: auditd
+detection:
+    selection:
+        type: 'EXECVE'
+    suspicious_process:
+        - 'nc'
+        - 'ncat'
+        - 'netcat'
+        - 'nmap'
+        - 'masscan'
+        - 'tcpdump'
+        - 'wireshark'
+    condition: selection and suspicious_process
+level: medium
+tags:
+    - attack.discovery
+    - attack.t1046
+---
+title: File Download via Command Line
+id: bt-008
+status: stable
+description: Detects file downloads using command line tools
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: syslog
+detection:
+    download_tools:
+        - 'wget http'
+        - 'curl http'
+        - 'curl -o'
+        - 'wget -O'
+    suspicious_dest:
+        - '/tmp/'
+        - '/var/tmp/'
+        - '/dev/shm/'
+    condition: download_tools and suspicious_dest
+level: high
+tags:
+    - attack.command_and_control
+    - attack.t1105
+---
+title: SSH Key Addition
+id: bt-009
+status: stable
+description: Detects addition of SSH authorized keys
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: syslog
+detection:
+    selection:
+        - 'authorized_keys'
+        - 'ssh-rsa'
+        - 'ssh-ed25519'
+    condition: selection
+level: medium
+tags:
+    - attack.persistence
+    - attack.t1098.004
+---
+title: Systemd Service Creation
+id: bt-010
+status: stable
+description: Detects creation of new systemd services
+author: BlueTeam-Windsurf
+logsource:
+    product: linux
+    service: syslog
+detection:
+    selection:
+        - 'systemctl enable'
+        - 'systemctl start'
+        - '/etc/systemd/system/'
+    condition: selection
+level: low
+tags:
+    - attack.persistence
+    - attack.t1543.002

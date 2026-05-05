@@ -1,0 +1,356 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "⚪ WHITE TEAM - GRC Hub"
+    },
+    {
+      "path": "policies",
+      "name": "📜 Policies"
+    },
+    {
+      "path": "procedures",
+      "name": "📋 Procedures"
+    },
+    {
+      "path": "audits",
+      "name": "🔍 Audits"
+    },
+    {
+      "path": "risks",
+      "name": "⚠️ Risk Management"
+    },
+    {
+      "path": "compliance",
+      "name": "✅ Compliance Evidence"
+    },
+    {
+      "path": "frameworks",
+      "name": "📚 Frameworks"
+    },
+    {
+      "path": "controls",
+      "name": "🛡️ Controls"
+    },
+    {
+      "path": "tools",
+      "name": "🔧 Tools & Scripts"
+    },
+    {
+      "path": "templates",
+      "name": "📄 Templates"
+    },
+    {
+      "path": "reports",
+      "name": "📊 Reports"
+    },
+    {
+      "path": "evidence",
+      "name": "📁 Evidence Repository"
+    }
+  ],
+  "settings": {
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#FFFFFF",
+      "activityBar.foreground": "#1a1a2e",
+      "sideBar.background": "#f8f9fa",
+      "sideBar.foreground": "#1a1a2e",
+      "editor.background": "#ffffff",
+      "statusBar.background": "#e0e0e0",
+      "statusBar.foreground": "#1a1a2e",
+      "titleBar.activeBackground": "#f0f0f0",
+      "titleBar.activeForeground": "#1a1a2e",
+      "tab.activeBackground": "#ffffff",
+      "tab.inactiveBackground": "#f0f0f0",
+      "terminal.background": "#1a1a2e",
+      "terminal.foreground": "#ffffff",
+      "editorLineNumber.foreground": "#6c757d",
+      "editorLineNumber.activeForeground": "#1a1a2e"
+    },
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.6,
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.renderWhitespace": "selection",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [80, 120],
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.associations": {
+      "*.policy": "markdown",
+      "*.procedure": "markdown",
+      "*.control": "yaml",
+      "*.risk": "yaml",
+      "*.audit": "yaml",
+      "*.evidence": "json"
+    },
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/.git": false,
+      "**/node_modules": true
+    },
+    "explorer.sortOrder": "type",
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": true,
+    "explorer.confirmDragAndDrop": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+      }
+    },
+    "[yaml]": {
+      "editor.autoIndent": "full",
+      "editor.tabSize": 2
+    },
+    "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features",
+      "editor.tabSize": 2
+    },
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.6,
+    "yaml.schemas": {
+      "${workspaceFolder}/schemas/control.schema.json": "controls/**/*.yaml",
+      "${workspaceFolder}/schemas/risk.schema.json": "risks/**/*.yaml",
+      "${workspaceFolder}/schemas/audit.schema.json": "audits/**/*.yaml"
+    },
+    "todo-tree.general.tags": [
+      "TODO",
+      "FIXME",
+      "REVIEW",
+      "AUDIT",
+      "RISK",
+      "COMPLIANCE",
+      "POLICY",
+      "CONTROL",
+      "EVIDENCE"
+    ],
+    "todo-tree.highlights.customHighlight": {
+      "AUDIT": {
+        "icon": "search",
+        "foreground": "#1a1a2e",
+        "background": "#ffc107",
+        "iconColour": "#ffc107"
+      },
+      "RISK": {
+        "icon": "alert",
+        "foreground": "#ffffff",
+        "background": "#dc3545",
+        "iconColour": "#dc3545"
+      },
+      "COMPLIANCE": {
+        "icon": "check",
+        "foreground": "#ffffff",
+        "background": "#28a745",
+        "iconColour": "#28a745"
+      },
+      "POLICY": {
+        "icon": "book",
+        "foreground": "#ffffff",
+        "background": "#007bff",
+        "iconColour": "#007bff"
+      },
+      "CONTROL": {
+        "icon": "shield",
+        "foreground": "#ffffff",
+        "background": "#6f42c1",
+        "iconColour": "#6f42c1"
+      },
+      "EVIDENCE": {
+        "icon": "file",
+        "foreground": "#ffffff",
+        "background": "#17a2b8",
+        "iconColour": "#17a2b8"
+      }
+    },
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.codeLens.enabled": true,
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/venv": true,
+      "**/__pycache__": true
+    },
+    "cascade.aiAssistant.enabled": true,
+    "cascade.grc.frameworksEnabled": [
+      "ISO27001",
+      "SOC2",
+      "PCI-DSS",
+      "GDPR",
+      "HIPAA",
+      "NIST-CSF",
+      "COBIT",
+      "CIS"
+    ],
+    "cascade.grc.autoMapControls": true,
+    "cascade.grc.riskScoring": "quantitative",
+    "cascade.grc.complianceTracking": true
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-python.black-formatter",
+      "redhat.vscode-yaml",
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid",
+      "davidanson.vscode-markdownlint",
+      "gruntfuggly.todo-tree",
+      "eamodio.gitlens",
+      "pkief.material-icon-theme",
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker",
+      "ms-vscode.live-server",
+      "hediet.vscode-drawio",
+      "jebbs.plantuml",
+      "foam.foam-vscode",
+      "mushan.vscode-paste-image",
+      "shd101wyy.markdown-preview-enhanced",
+      "codeium.codeium"
+    ],
+    "unwantedRecommendations": []
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🔍 Run Compliance Check",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/compliance_check.py", "--all"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "⚠️ Run Risk Assessment",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/risk_assessment.py"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📜 Generate Policy",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/policy_generator.py", "--interactive"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📋 Generate Audit Checklist",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/audit_checklist.py"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📊 Run Gap Analysis",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/gap_analysis.py", "--framework", "ISO27001"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🚀 Setup Environment",
+        "type": "shell",
+        "command": "bash",
+        "args": ["install.sh"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📈 Generate GRC Report",
+        "type": "shell",
+        "command": "python",
+        "args": ["tools/custom-scripts/report_generator.py", "--full"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Compliance Check",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/compliance_check.py",
+        "args": ["--verbose"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Python: Risk Assessment",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/risk_assessment.py",
+        "args": ["--interactive"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Python: Current File",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+}

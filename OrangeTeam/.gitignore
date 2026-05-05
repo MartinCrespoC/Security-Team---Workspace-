@@ -1,0 +1,78 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🟠 ORANGE TEAM - Git Ignore
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Data & Databases
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Docker volumes
+docker/*/data/
+
+# Secrets & Keys
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+
+# OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Backups
+backups/
+*.bak
+*.backup
+
+# Reports (may contain sensitive data)
+metrics/reports/*.pdf
+metrics/reports/*.json
+campaigns/*/results.json
+campaigns/*/targets.csv
+
+# Node (if using any JS tools)
+node_modules/
+npm-debug.log
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

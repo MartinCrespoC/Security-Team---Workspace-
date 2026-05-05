@@ -1,0 +1,60 @@
+{
+    "version": "1.0.0",
+    "workspace_root": "/home/xroot/Documents/SecurityTeam Workspace",
+    "teams": {
+        "RedTeam": {
+            "color": "red",
+            "emoji": "🔴",
+            "role": "Offensive Security",
+            "capabilities": ["exploitation", "reconnaissance", "post-exploitation", "social-engineering"],
+            "can_communicate_with": ["PurpleTeam", "BlueTeam"]
+        },
+        "BlueTeam": {
+            "color": "blue",
+            "emoji": "🔵",
+            "role": "Defensive Security",
+            "capabilities": ["detection", "response", "forensics", "monitoring", "threat-intel"],
+            "can_communicate_with": ["PurpleTeam", "RedTeam", "GreenTeam"]
+        },
+        "PurpleTeam": {
+            "color": "purple",
+            "emoji": "🟣",
+            "role": "Security Validation",
+            "capabilities": ["attack-simulation", "detection-validation", "gap-analysis"],
+            "can_communicate_with": ["RedTeam", "BlueTeam", "WhiteTeam"]
+        },
+        "GreenTeam": {
+            "color": "green",
+            "emoji": "🟢",
+            "role": "DevSecOps",
+            "capabilities": ["sast", "dast", "sca", "container-security", "iac-security"],
+            "can_communicate_with": ["BlueTeam", "YellowTeam"]
+        },
+        "WhiteTeam": {
+            "color": "white",
+            "emoji": "⚪",
+            "role": "GRC",
+            "capabilities": ["governance", "risk-management", "compliance", "audit"],
+            "can_communicate_with": ["PurpleTeam", "YellowTeam", "OrangeTeam"]
+        },
+        "YellowTeam": {
+            "color": "yellow",
+            "emoji": "🟡",
+            "role": "Security Architecture",
+            "capabilities": ["threat-modeling", "architecture-review", "security-requirements"],
+            "can_communicate_with": ["GreenTeam", "WhiteTeam"]
+        },
+        "OrangeTeam": {
+            "color": "orange",
+            "emoji": "🟠",
+            "role": "Security Awareness",
+            "capabilities": ["phishing-simulation", "training", "metrics", "awareness-campaigns"],
+            "can_communicate_with": ["WhiteTeam", "BlueTeam"]
+        }
+    },
+    "isolation": {
+        "enabled": true,
+        "share_findings": true,
+        "audit_communications": true
+    }
+}

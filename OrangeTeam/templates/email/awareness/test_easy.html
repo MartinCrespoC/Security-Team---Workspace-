@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>URGENT: Your Account Will Be Suspended!!!</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+    <!-- 
+    🟠 ORANGE TEAM - Easy Difficulty Phishing Template
+    Obvious indicators: spelling errors, urgency, suspicious sender
+    -->
+    
+    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ddd; padding: 20px;">
+        <!-- Suspicious header -->
+        <div style="background: #ff0000; color: white; padding: 10px; text-align: center;">
+            <h1>⚠️ URGENT SECURITY ALERT ⚠️</h1>
+        </div>
+        
+        <div style="padding: 20px;">
+            <!-- Generic greeting (red flag) -->
+            <p>Dear Valued Costumer,</p>
+            
+            <!-- Spelling errors (red flags) -->
+            <p>We have detcted unusuall activity on your acount. Your acount will be 
+            <strong>SUSPENDED IMMEDIATLY</strong> if you do not verify your informaton.</p>
+            
+            <!-- Urgency and threats -->
+            <p style="color: red; font-weight: bold;">
+                YOU HAVE ONLY 24 HOURS TO RESPOND OR YOUR ACCOUNT WILL BE DELETED!!!
+            </p>
+            
+            <!-- Suspicious button -->
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{.URL}}" 
+                   style="background: #ff0000; color: white; padding: 15px 30px; 
+                          text-decoration: none; font-size: 18px; border-radius: 5px;">
+                    CLICK HERE TO VERIFY NOW!!!
+                </a>
+            </div>
+            
+            <!-- More red flags -->
+            <p>If you dont click the link, we will:</p>
+            <ul>
+                <li>Delete all your files</li>
+                <li>Cancel your subscription</li>
+                <li>Report you to authorities</li>
+            </ul>
+            
+            <!-- Suspicious signature -->
+            <p>Best regards,<br>
+            <strong>The Securty Team</strong><br>
+            IT Departmant<br>
+            <em>support@secur1ty-verify.com</em></p>
+        </div>
+        
+        <!-- Suspicious footer -->
+        <div style="background: #f0f0f0; padding: 10px; font-size: 10px; text-align: center;">
+            <p>This is a legitmate email from your company. Do not ignore.</p>
+            <p>© 2024 Definately Real Company Inc.</p>
+        </div>
+    </div>
+    
+    <!-- Tracking pixel -->
+    <img src="{{.TrackingURL}}" width="1" height="1" style="display:none;">
+</body>
+</html>

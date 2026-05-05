@@ -1,0 +1,216 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "🟡 Yellow Team - Security Architecture"
+    }
+  ],
+  "settings": {
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.renderWhitespace": "selection",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.associations": {
+      "*.tm": "json",
+      "*.threat": "json",
+      "*.arch": "json",
+      "*.puml": "plantuml",
+      "*.mmd": "mermaid"
+    },
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#FFD700",
+      "activityBar.foreground": "#000000",
+      "activityBarBadge.background": "#000000",
+      "activityBarBadge.foreground": "#FFD700",
+      "statusBar.background": "#FFD700",
+      "statusBar.foreground": "#000000",
+      "titleBar.activeBackground": "#FFD700",
+      "titleBar.activeForeground": "#000000",
+      "sideBar.border": "#FFD700",
+      "panel.border": "#FFD700",
+      "tab.activeBorder": "#FFD700",
+      "editorGroupHeader.tabsBorder": "#FFD700"
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontSize": 13,
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "black",
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.6,
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+      }
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+      "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "plantuml.render": "PlantUMLServer",
+    "mermaid.theme": "dark"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.black-formatter",
+      "ms-python.pylint",
+      "redhat.vscode-yaml",
+      "esbenp.prettier-vscode",
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid",
+      "jebbs.plantuml",
+      "hediet.vscode-drawio",
+      "streetsidesoftware.code-spell-checker",
+      "gruntfuggly.todo-tree",
+      "eamodio.gitlens",
+      "PKief.material-icon-theme",
+      "davidanson.vscode-markdownlint",
+      "shd101wyy.markdown-preview-enhanced",
+      "codeium.windsurf"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🔍 Generate Threat Model",
+        "type": "shell",
+        "command": "python",
+        "args": ["${workspaceFolder}/tools/custom-scripts/threat_model.py", "--interactive"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🏗️ Architecture Review",
+        "type": "shell",
+        "command": "python",
+        "args": ["${workspaceFolder}/tools/custom-scripts/architecture_review.py"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🛡️ Zero Trust Validation",
+        "type": "shell",
+        "command": "bash",
+        "args": ["${workspaceFolder}/tools/custom-scripts/zero_trust_check.sh"],
+        "group": "test",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🌳 Generate Attack Tree",
+        "type": "shell",
+        "command": "python",
+        "args": ["${workspaceFolder}/tools/custom-scripts/attack_tree.py"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📋 Generate Security Requirements",
+        "type": "shell",
+        "command": "python",
+        "args": ["${workspaceFolder}/tools/custom-scripts/security_requirements.py"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "📊 Full Security Analysis",
+        "type": "shell",
+        "command": "bash",
+        "args": ["-c", "python tools/custom-scripts/threat_model.py && python tools/custom-scripts/architecture_review.py && bash tools/custom-scripts/zero_trust_check.sh"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "🚀 Install Dependencies",
+        "type": "shell",
+        "command": "bash",
+        "args": ["${workspaceFolder}/install.sh"],
+        "group": "build",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Threat Model Generator",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/threat_model.py",
+        "args": ["--interactive"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Python: Architecture Review",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/architecture_review.py",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Python: Attack Tree Generator",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/attack_tree.py",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Python: Security Requirements",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/security_requirements.py",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "BlueTeam-Windsurf"
+		}
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"editor.tabSize": 4,
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.associations": {
+			"*.yar": "yara",
+			"*.sigma": "yaml",
+			"*.rules": "snort"
+		},
+		"python.defaultInterpreterPath": "/usr/bin/python3",
+		"terminal.integrated.defaultProfile.linux": "bash",
+		"editor.rulers": [
+			100
+		],
+		"files.exclude": {
+			"**/__pycache__": true,
+			"**/*.pyc": true
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.python",
+			"ms-python.vscode-pylance",
+			"ms-vscode.powershell",
+			"redhat.vscode-yaml",
+			"timonwong.shellcheck",
+			"foxundermoon.shell-format",
+			"streetsidesoftware.code-spell-checker",
+			"eamodio.gitlens",
+			"yzhang.markdown-all-in-one",
+			"bierner.markdown-mermaid"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Detect Threats",
+				"type": "shell",
+				"command": "./tools/custom-scripts/detect.sh --full",
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "Threat Hunt",
+				"type": "shell",
+				"command": "./tools/custom-scripts/threat_hunter.sh --hunt-all",
+				"group": "build",
+				"problemMatcher": []
+			},
+			{
+				"label": "Collect Forensics",
+				"type": "shell",
+				"command": "sudo ./tools/custom-scripts/forensic_collector.sh --collect-all",
+				"group": "build",
+				"problemMatcher": []
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Python: Incident Response",
+				"type": "python",
+				"request": "launch",
+				"program": "${workspaceFolder}/tools/custom-scripts/incident_response.py",
+				"args": [
+					"--help"
+				],
+				"console": "integratedTerminal"
+			},
+			{
+				"name": "Python: Log Analyzer",
+				"type": "python",
+				"request": "launch",
+				"program": "${workspaceFolder}/tools/custom-scripts/log_analyzer.py",
+				"args": [
+					"--help"
+				],
+				"console": "integratedTerminal"
+			}
+		]
+	}
+}

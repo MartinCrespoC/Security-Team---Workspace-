@@ -1,0 +1,119 @@
+version: '3.8'
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🟠 ORANGE TEAM - Security Awareness Platform
+# Docker Compose Configuration
+# ═══════════════════════════════════════════════════════════════════════════════
+
+services:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Database Services
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  postgres:
+    image: postgres:16-alpine
+    container_name: orange_postgres
+    environment:
+      POSTGRES_DB: orangeteam
+      POSTGRES_USER: orange
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-orangeteam_secure_2024}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - orange_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orange -d orangeteam"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: orange_redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - orange_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Phishing Tools
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  gophish:
+    image: gophish/gophish:latest
+    container_name: orange_gophish
+    ports:
+      - "3333:3333"   # Admin interface
+      - "8888:80"     # Phishing server
+    volumes:
+      - gophish_data:/opt/gophish/data
+    networks:
+      - orange_network
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Metrics & Monitoring
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  grafana:
+    image: grafana/grafana:latest
+    container_name: orange_grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-orangeteam}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - orange_network
+    restart: unless-stopped
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # Mail Server (Development)
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: orange_mailhog
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+    networks:
+      - orange_network
+    restart: unless-stopped
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Volumes
+# ─────────────────────────────────────────────────────────────────────────────
+
+volumes:
+  postgres_data:
+    name: orange_postgres_data
+  redis_data:
+    name: orange_redis_data
+  gophish_data:
+    name: orange_gophish_data
+  grafana_data:
+    name: orange_grafana_data
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Networks
+# ─────────────────────────────────────────────────────────────────────────────
+
+networks:
+  orange_network:
+    name: orange_network
+    driver: bridge

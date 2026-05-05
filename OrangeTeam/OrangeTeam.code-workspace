@@ -1,0 +1,135 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "🟠 ORANGE TEAM - Security Awareness"
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#FF6B00",
+      "titleBar.activeForeground": "#FFFFFF",
+      "titleBar.inactiveBackground": "#CC5500",
+      "activityBar.background": "#FF6B00",
+      "activityBar.foreground": "#FFFFFF",
+      "statusBar.background": "#FF8C00",
+      "statusBar.foreground": "#FFFFFF",
+      "sideBar.border": "#FF6B00",
+      "tab.activeBorder": "#FF6B00",
+      "editorGroupHeader.tabsBackground": "#1A1A1A",
+      "editor.selectionBackground": "#FF6B0040"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 14,
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontSize": 13,
+    "files.associations": {
+      "*.phish": "html",
+      "*.campaign": "json",
+      "*.metrics": "json",
+      "*.quiz": "yaml"
+    },
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      ".git": false
+    },
+    "cascade.orangeTeam.enabled": true,
+    "cascade.orangeTeam.autoPhishing": true,
+    "cascade.orangeTeam.metricsTracking": true,
+    "cascade.orangeTeam.trainingAutoAssign": true
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "redhat.vscode-yaml",
+      "esbenp.prettier-vscode",
+      "PKief.material-icon-theme",
+      "streetsidesoftware.code-spell-checker",
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid",
+      "ms-azuretools.vscode-docker",
+      "eamodio.gitlens",
+      "usernamehw.errorlens",
+      "formulahendry.code-runner"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "🎣 Launch Phishing Campaign",
+        "type": "shell",
+        "command": "python3 tools/custom-scripts/phishing_campaign.py --launch",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "panel": "new"
+        }
+      },
+      {
+        "label": "📊 Generate Metrics Report",
+        "type": "shell",
+        "command": "python3 tools/custom-scripts/awareness_metrics.py --report",
+        "group": "build"
+      },
+      {
+        "label": "📚 Generate Training Material",
+        "type": "shell",
+        "command": "python3 tools/custom-scripts/training_generator.py --generate",
+        "group": "build"
+      },
+      {
+        "label": "🔧 Social Engineering Test",
+        "type": "shell",
+        "command": "bash tools/custom-scripts/social_eng_test.sh",
+        "group": "test"
+      },
+      {
+        "label": "🚀 Start GoPhish Server",
+        "type": "shell",
+        "command": "docker-compose -f docker/gophish/docker-compose.yml up -d",
+        "group": "build"
+      },
+      {
+        "label": "📈 Open Metrics Dashboard",
+        "type": "shell",
+        "command": "python3 -m http.server 8080 -d metrics/dashboard",
+        "group": "build"
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🎣 Debug Phishing Campaign",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/phishing_campaign.py",
+        "args": ["--debug"],
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "📊 Debug Metrics Generator",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/awareness_metrics.py",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "📚 Debug Training Generator",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/tools/custom-scripts/training_generator.py",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+}

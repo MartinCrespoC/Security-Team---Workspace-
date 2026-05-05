@@ -1,0 +1,196 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🛡️ SECURITY TEAM WORKSPACE - GITIGNORE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARCHIVOS SENSIBLES - NUNCA SUBIR
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Archivos de entorno con secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Credenciales y keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa*
+*.ppk
+credentials.json
+secrets.json
+api_keys.txt
+passwords.txt
+hashes.txt
+cracked.txt
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RESULTADOS DE PRUEBAS Y ESCANEOS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Resultados de escaneos (el usuario decide si subirlos)
+*/results/
+*/output/
+*/scans/
+*/findings/
+*/evidence/
+*/screenshots/
+*/loot/
+*/exfil/
+
+# Logs de herramientas
+*.log
+logs/
+*.nmap
+*.gnmap
+*.xml.nmap
+
+# Reportes generados (pueden contener info sensible)
+reports/
+*.report
+*.pdf
+FULL_REPORT.md
+EXECUTIVE_SUMMARY.md
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROYECTOS Y CONTEXTOS (DATOS DE CLIENTES)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Proyectos con datos de clientes
+.projects/*/
+
+# Hallazgos compartidos entre equipos
+.shared/findings/
+.shared/evidence/
+.shared/communications.log
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HERRAMIENTAS Y EXPLOITS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Exploits descargados/generados
+exploits/
+payloads/
+shells/
+*.exe
+*.dll
+*.so
+*.elf
+*.bin
+*.shellcode
+
+# Wordlists grandes
+wordlists/*.txt
+!wordlists/README.md
+
+# Bases de datos de vulnerabilidades locales
+*.db
+*.sqlite
+*.sqlite3
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARCHIVOS TEMPORALES Y CACHE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Temporales del sistema
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+*.egg
+.pytest_cache/
+.mypy_cache/
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+ENV/
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Go
+vendor/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DOCKER Y CONTENEDORES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Volúmenes de Docker
+docker-data/
+volumes/
+*.tar
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# IDE Y EDITORES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# VSCode/Windsurf
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# JetBrains
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+Session.vim
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# LOGS DE INSTALACIÓN
+# ═══════════════════════════════════════════════════════════════════════════════
+
+install.log
+setup.log
+*.install.log
+.installed
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARCHIVOS ESPECÍFICOS DE EQUIPOS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# RedTeam
+RedTeam/sessions/
+RedTeam/msf*/
+RedTeam/.msf*/
+
+# BlueTeam
+BlueTeam/alerts/
+BlueTeam/incidents/
+BlueTeam/iocs/*.txt
+
+# OrangeTeam
+OrangeTeam/campaigns/*/results/
+OrangeTeam/captured/
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# NOTA: ARCHIVOS QUE SÍ SE INCLUYEN
+# ═══════════════════════════════════════════════════════════════════════════════
+# Los siguientes archivos SÍ se suben al repositorio:
+# - Código fuente y scripts
+# - Archivos de configuración (sin secrets)
+# - Templates (.env.example)
+# - Documentación
+# - Workflows de Windsurf
+# - Archivos de reglas para IDEs
+# ═══════════════════════════════════════════════════════════════════════════════

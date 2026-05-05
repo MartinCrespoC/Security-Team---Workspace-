@@ -1,0 +1,228 @@
+# WHITE TEAM GRC - Risk Schema
+# JSON Schema for risk assessment records
+
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Risk Assessment Schema"
+description: "Schema for WHITE TEAM GRC risk assessment records"
+type: object
+
+required:
+  - id
+  - title
+  - category
+  - inherent_risk
+  - status
+
+properties:
+  id:
+    type: string
+    pattern: "^RISK-[0-9]{4}-[A-Z0-9]+$"
+    description: "Unique risk identifier (e.g., RISK-2024-001)"
+    
+  title:
+    type: string
+    minLength: 5
+    maxLength: 200
+    description: "Brief risk title"
+    
+  description:
+    type: string
+    description: "Detailed risk description"
+    
+  category:
+    type: string
+    enum:
+      - strategic
+      - operational
+      - financial
+      - compliance
+      - technology
+      - third_party
+    description: "Risk category"
+    
+  asset:
+    type: string
+    description: "Affected asset or system"
+    
+  threat:
+    type: string
+    description: "Threat description"
+    
+  vulnerability:
+    type: string
+    description: "Vulnerability being exploited"
+    
+  inherent_risk:
+    type: object
+    required:
+      - likelihood
+      - impact
+    properties:
+      likelihood:
+        type: integer
+        minimum: 1
+        maximum: 5
+        description: "Likelihood score (1-5)"
+      impact:
+        type: integer
+        minimum: 1
+        maximum: 5
+        description: "Impact score (1-5)"
+      score:
+        type: integer
+        minimum: 1
+        maximum: 25
+        description: "Calculated risk score (likelihood × impact)"
+      level:
+        type: string
+        enum:
+          - critical
+          - high
+          - medium
+          - low
+          - very_low
+        description: "Risk level based on score"
+        
+  controls:
+    type: array
+    items:
+      type: object
+      required:
+        - id
+        - name
+        - effectiveness
+      properties:
+        id:
+          type: string
+          description: "Control identifier"
+        name:
+          type: string
+          description: "Control name"
+        effectiveness:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: "Control effectiveness percentage"
+          
+  residual_risk:
+    type: object
+    properties:
+      likelihood:
+        type: integer
+        minimum: 1
+        maximum: 5
+      impact:
+        type: integer
+        minimum: 1
+        maximum: 5
+      score:
+        type: integer
+        minimum: 1
+        maximum: 25
+      level:
+        type: string
+        enum:
+          - critical
+          - high
+          - medium
+          - low
+          - very_low
+          
+  treatment:
+    type: object
+    properties:
+      strategy:
+        type: string
+        enum:
+          - mitigate
+          - transfer
+          - accept
+          - avoid
+        description: "Treatment strategy"
+      actions:
+        type: array
+        items:
+          type: string
+        description: "List of treatment actions"
+      owner:
+        type: string
+        description: "Treatment owner"
+      due_date:
+        type: string
+        format: date
+        description: "Treatment due date"
+      status:
+        type: string
+        enum:
+          - pending
+          - in_progress
+          - completed
+          - overdue
+        description: "Treatment status"
+        
+  status:
+    type: string
+    enum:
+      - open
+      - in_progress
+      - closed
+      - accepted
+    description: "Overall risk status"
+    
+  created_date:
+    type: string
+    format: date-time
+    description: "Risk creation date"
+    
+  last_updated:
+    type: string
+    format: date-time
+    description: "Last update date"
+    
+  owner:
+    type: string
+    description: "Risk owner"
+    
+  notes:
+    type: string
+    description: "Additional notes"
+
+examples:
+  - id: "RISK-2024-001"
+    title: "Unauthorized Access to Production Database"
+    description: "Risk of unauthorized access to production database containing customer PII"
+    category: "technology"
+    asset: "Production PostgreSQL Database"
+    threat: "External attacker or malicious insider"
+    vulnerability: "Weak access controls and missing MFA"
+    inherent_risk:
+      likelihood: 4
+      impact: 5
+      score: 20
+      level: "critical"
+    controls:
+      - id: "CTRL-001"
+        name: "Database Access Control"
+        effectiveness: 60
+      - id: "CTRL-002"
+        name: "Network Segmentation"
+        effectiveness: 70
+    residual_risk:
+      likelihood: 2
+      impact: 4
+      score: 8
+      level: "medium"
+    treatment:
+      strategy: "mitigate"
+      actions:
+        - "Implement MFA for database access"
+        - "Deploy PAM solution"
+        - "Enable audit logging"
+      owner: "Database Administrator"
+      due_date: "2024-03-31"
+      status: "in_progress"
+    status: "open"
+    created_date: "2024-01-15T10:30:00Z"
+    last_updated: "2024-01-20T14:45:00Z"
+    owner: "CISO"
+    notes: "Priority remediation due to PCI-DSS requirements"

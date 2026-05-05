@@ -1,0 +1,18 @@
+---
+# Template para documentar ataques simulados
+technique_id: "T1003.001"
+technique_name: "OS Credential Dumping: LSASS Memory"
+tactic: "Credential Access"
+tool: "atomic-red-team"
+command: "Invoke-AtomicTest T1003.001"
+timestamp_start: "2024-01-15T10:30:00"
+timestamp_end: "2024-01-15T10:30:05"
+status: "success"
+output: |
+  Resultado de la ejecución del comando
+artifacts:
+  - "evidence/T1003.001/20240115_103000/output.txt"
+evidence_hash: "sha256:abc123..."
+operator: "red_team_operator"
+notes: |
+  Notas adicionales sobre la ejecución

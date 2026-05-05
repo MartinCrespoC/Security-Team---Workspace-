@@ -1,0 +1,116 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🟠 ORANGE TEAM - Metrics Configuration
+# ═══════════════════════════════════════════════════════════════════════════════
+
+kpis:
+  click_rate:
+    name: "Click Rate"
+    description: "Percentage of users who clicked phishing links"
+    target: 5
+    warning: 10
+    critical: 15
+    unit: "percent"
+    direction: "lower_is_better"
+    
+  report_rate:
+    name: "Report Rate"
+    description: "Percentage of users who reported phishing"
+    target: 80
+    warning: 60
+    critical: 40
+    unit: "percent"
+    direction: "higher_is_better"
+    
+  credential_submit:
+    name: "Credential Submission Rate"
+    description: "Percentage who submitted credentials"
+    target: 2
+    warning: 5
+    critical: 10
+    unit: "percent"
+    direction: "lower_is_better"
+    
+  training_completion:
+    name: "Training Completion"
+    description: "Percentage of assigned training completed"
+    target: 95
+    warning: 85
+    critical: 75
+    unit: "percent"
+    direction: "higher_is_better"
+    
+  time_to_report:
+    name: "Time to Report"
+    description: "Average time to report phishing"
+    target: 5
+    warning: 15
+    critical: 30
+    unit: "minutes"
+    direction: "lower_is_better"
+    
+  repeat_offenders:
+    name: "Repeat Offenders"
+    description: "Users who clicked multiple times"
+    target: 3
+    warning: 5
+    critical: 10
+    unit: "percent"
+    direction: "lower_is_better"
+
+alerts:
+  high_risk_user:
+    condition: "click_count >= 3 in 30 days"
+    severity: "high"
+    actions:
+      - "escalate_to_manager"
+      - "assign_remediation_training"
+      - "schedule_retest"
+      
+  campaign_anomaly:
+    condition: "click_rate > 2x average"
+    severity: "medium"
+    actions:
+      - "pause_campaign"
+      - "review_template"
+      - "notify_admin"
+      
+  training_overdue:
+    condition: "assigned > 7 days AND not completed"
+    severity: "low"
+    actions:
+      - "send_reminder"
+      - "notify_manager"
+
+reporting:
+  schedules:
+    daily:
+      time: "08:00"
+      recipients: ["security-team@company.com"]
+      format: "summary"
+      
+    weekly:
+      day: "monday"
+      time: "09:00"
+      recipients: ["security-team@company.com", "management@company.com"]
+      format: "detailed"
+      
+    monthly:
+      day: 1
+      time: "10:00"
+      recipients: ["security-team@company.com", "executives@company.com"]
+      format: "executive"
+
+risk_scoring:
+  weights:
+    phishing_clicks: 30
+    credential_submissions: 40
+    training_completion: -20
+    phishing_reports: -10
+    quiz_scores: -15
+    time_since_incident: -5
+    
+  thresholds:
+    low: 30
+    medium: 60
+    high: 80
+    critical: 90

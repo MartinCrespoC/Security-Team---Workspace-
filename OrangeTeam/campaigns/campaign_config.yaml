@@ -1,0 +1,84 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🟠 ORANGE TEAM - Campaign Configuration
+# Global settings for phishing campaigns
+# ═══════════════════════════════════════════════════════════════════════════════
+
+default_settings:
+  auto_remediation: true
+  track_opens: true
+  track_clicks: true
+  track_submissions: true
+  send_awareness_page: true
+  
+difficulty_levels:
+  easy:
+    description: "Obvious phishing indicators for baseline testing"
+    indicators:
+      - spelling_errors: true
+      - suspicious_url: true
+      - generic_greeting: true
+      - urgency_level: low
+    
+  medium:
+    description: "Standard credential phishing"
+    indicators:
+      - spelling_errors: false
+      - suspicious_url: true
+      - generic_greeting: false
+      - urgency_level: medium
+      
+  hard:
+    description: "Spear phishing with personalization"
+    indicators:
+      - spelling_errors: false
+      - suspicious_url: false
+      - generic_greeting: false
+      - urgency_level: high
+      - personalization: true
+      
+  expert:
+    description: "Whaling/BEC simulation"
+    indicators:
+      - spelling_errors: false
+      - suspicious_url: false
+      - generic_greeting: false
+      - urgency_level: critical
+      - personalization: true
+      - executive_impersonation: true
+
+smtp_profiles:
+  default:
+    name: "Default SMTP"
+    host: "${SMTP_HOST}"
+    port: 25
+    from_address: "notifications@company.com"
+    
+  external:
+    name: "External SMTP"
+    host: "smtp.external.com"
+    port: 587
+    use_tls: true
+
+landing_pages:
+  awareness:
+    name: "Awareness Landing Page"
+    redirect_url: "/training/phishing-awareness"
+    capture_credentials: false
+    
+  credential_capture:
+    name: "Credential Capture"
+    redirect_url: "/awareness"
+    capture_credentials: true
+    capture_passwords: false
+
+tracking:
+  pixel_tracking: true
+  link_tracking: true
+  geolocation: false
+  user_agent: true
+  
+reporting:
+  auto_generate: true
+  frequency: "daily"
+  recipients:
+    - "security-team@company.com"

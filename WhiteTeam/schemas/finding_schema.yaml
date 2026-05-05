@@ -1,0 +1,217 @@
+# WHITE TEAM GRC - Audit Finding Schema
+# JSON Schema for audit finding records
+
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Audit Finding Schema"
+description: "Schema for WHITE TEAM GRC audit finding records"
+type: object
+
+required:
+  - id
+  - title
+  - severity
+  - status
+
+properties:
+  id:
+    type: string
+    pattern: "^FIND-[A-Z]+-[0-9]+-[0-9]+$"
+    description: "Unique finding identifier (e.g., FIND-AUD-2024-001)"
+    
+  audit_id:
+    type: string
+    description: "Parent audit identifier"
+    
+  title:
+    type: string
+    minLength: 5
+    maxLength: 200
+    description: "Finding title"
+    
+  severity:
+    type: string
+    enum:
+      - critical
+      - high
+      - medium
+      - low
+      - observation
+    description: "Finding severity"
+    
+  framework:
+    type: string
+    description: "Applicable framework"
+    
+  control_id:
+    type: string
+    description: "Related control identifier"
+    
+  control_reference:
+    type: string
+    description: "Framework control reference (e.g., A.8.5)"
+    
+  condition:
+    type: string
+    description: "What was found (current state)"
+    
+  criteria:
+    type: string
+    description: "What should be (requirement)"
+    
+  cause:
+    type: string
+    description: "Root cause analysis"
+    
+  effect:
+    type: string
+    description: "Potential impact/consequence"
+    
+  recommendation:
+    type: string
+    description: "Recommended remediation"
+    
+  evidence:
+    type: array
+    items:
+      type: string
+    description: "Evidence supporting the finding"
+    
+  management_response:
+    type: string
+    description: "Management's response to finding"
+    
+  agreed_action:
+    type: string
+    description: "Agreed remediation action"
+    
+  remediation:
+    type: object
+    properties:
+      owner:
+        type: string
+        description: "Remediation owner"
+      due_date:
+        type: string
+        format: date
+        description: "Remediation due date"
+      status:
+        type: string
+        enum:
+          - open
+          - in_progress
+          - completed
+          - verified
+          - overdue
+          - risk_accepted
+        description: "Remediation status"
+      completion_date:
+        type: string
+        format: date
+        description: "Actual completion date"
+      verification_date:
+        type: string
+        format: date
+        description: "Verification date"
+      verified_by:
+        type: string
+        description: "Who verified the remediation"
+        
+  sla_days:
+    type: integer
+    description: "SLA for remediation in days"
+    
+  is_repeat:
+    type: boolean
+    description: "Is this a repeat finding?"
+    
+  original_finding_id:
+    type: string
+    description: "Original finding ID if repeat"
+    
+  status:
+    type: string
+    enum:
+      - draft
+      - open
+      - in_progress
+      - remediated
+      - verified
+      - closed
+      - risk_accepted
+    description: "Finding status"
+    
+  identified_date:
+    type: string
+    format: date
+    description: "Date finding was identified"
+    
+  identified_by:
+    type: string
+    description: "Auditor who identified the finding"
+    
+  last_updated:
+    type: string
+    format: date-time
+    description: "Last update timestamp"
+    
+  notes:
+    type: string
+    description: "Additional notes"
+
+sla_reference:
+  critical: 7
+  high: 30
+  medium: 60
+  low: 90
+  observation: null
+
+examples:
+  - id: "FIND-AUD-2024-001"
+    audit_id: "AUD-2024-001"
+    title: "MFA Not Enforced for Remote Access"
+    severity: "high"
+    framework: "ISO27001"
+    control_id: "CTRL-001"
+    control_reference: "A.8.5"
+    condition: |
+      Multi-factor authentication is not enforced for all remote access 
+      connections. Testing revealed that 15% of VPN users can connect 
+      using only username and password.
+    criteria: |
+      ISO 27001:2022 A.8.5 requires secure authentication including 
+      multi-factor authentication for remote access. Organization policy 
+      POL-ACC-001 mandates MFA for all remote connections.
+    cause: |
+      Legacy VPN configuration was not updated when MFA was implemented. 
+      Some user accounts were exempted during initial rollout and never 
+      re-enabled.
+    effect: |
+      Increased risk of unauthorized access through compromised credentials. 
+      Potential data breach exposure. Non-compliance with ISO 27001 and 
+      PCI-DSS requirements.
+    recommendation: |
+      1. Immediately enable MFA for all VPN users
+      2. Remove legacy exemptions from MFA policy
+      3. Implement automated compliance checking
+      4. Add MFA status to user provisioning checklist
+    evidence:
+      - "VPN configuration export showing exemptions"
+      - "User list without MFA enrollment"
+      - "Authentication logs showing password-only access"
+    management_response: |
+      Accepted. IT Security will remediate within 14 days. Emergency 
+      change request submitted.
+    agreed_action: |
+      Enable MFA for all remaining users and remove exemption capability 
+      from VPN configuration.
+    remediation:
+      owner: "IT Security Manager"
+      due_date: "2024-02-15"
+      status: "in_progress"
+    sla_days: 30
+    is_repeat: false
+    status: "open"
+    identified_date: "2024-01-20"
+    identified_by: "Internal Audit"
+    last_updated: "2024-01-22T10:30:00Z"
+    notes: "Escalated to CISO due to PCI-DSS implications"

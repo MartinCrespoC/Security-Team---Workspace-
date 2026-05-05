@@ -1,0 +1,27 @@
+---
+# Template para documentar validaciones de detección
+technique_id: "T1003.001"
+validation_timestamp: "2024-01-15T10:35:00"
+timeframe: "1h"
+coverage: 85
+detection_sources:
+  - source: "sysmon"
+    detected: true
+    event_id: 10
+    time_to_detect: 120
+    alert_details: "Process Access to LSASS"
+  - source: "edr"
+    detected: true
+    alert_name: "LSASS Memory Access"
+    time_to_detect: 30
+    severity: "high"
+  - source: "sigma"
+    detected: true
+    rule_name: "proc_access_win_lsass_memdump.yml"
+  - source: "windows_security"
+    detected: false
+    reason: "Event not configured"
+false_positives: 0
+analyst: "blue_team_analyst"
+notes: |
+  Notas adicionales sobre la validación

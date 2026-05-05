@@ -1,0 +1,120 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# 🟠 ORANGE TEAM - Phishing Quiz Question Bank
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metadata:
+  topic: phishing
+  version: "1.0"
+  last_updated: "2024-01-15"
+  total_questions: 15
+
+questions:
+  - id: phish_001
+    difficulty: basic
+    question: "Which of the following is a common indicator of a phishing email?"
+    options:
+      - "Email from a known colleague"
+      - "Urgent request for immediate action"
+      - "Company newsletter"
+      - "Meeting invitation from your calendar"
+    correct_answer: 1
+    explanation: "Phishing emails often create urgency to pressure victims into acting without thinking carefully."
+    
+  - id: phish_002
+    difficulty: basic
+    question: "What should you do if you receive a suspicious email?"
+    options:
+      - "Click the link to investigate"
+      - "Forward it to all your colleagues"
+      - "Report it using the phishing report button"
+      - "Delete it and forget about it"
+    correct_answer: 2
+    explanation: "Always report suspicious emails so the security team can investigate and protect others."
+    
+  - id: phish_003
+    difficulty: intermediate
+    question: "How can you verify if an email requesting sensitive information is legitimate?"
+    options:
+      - "Check if it has a company logo"
+      - "Contact the sender through a separate, known channel"
+      - "Reply to the email asking if it's real"
+      - "Click the link to see where it goes"
+    correct_answer: 1
+    explanation: "Always verify through a separate, known communication channel, never by replying to the suspicious email."
+    
+  - id: phish_004
+    difficulty: intermediate
+    question: "What is spear phishing?"
+    options:
+      - "Phishing using fishing-related imagery"
+      - "Mass phishing campaigns sent to thousands"
+      - "Targeted phishing using personal information about the victim"
+      - "Phishing through phone calls"
+    correct_answer: 2
+    explanation: "Spear phishing targets specific individuals using researched personal information to appear more credible."
+    
+  - id: phish_005
+    difficulty: basic
+    question: "Which URL is most likely to be malicious?"
+    options:
+      - "https://www.company.com/login"
+      - "https://company-secure.login-verify.com/auth"
+      - "https://login.company.com/auth"
+      - "https://www.company.com/password-reset"
+    correct_answer: 1
+    explanation: "The domain 'login-verify.com' is suspicious. Legitimate company URLs have the company name as the main domain."
+    
+  - id: phish_006
+    difficulty: advanced
+    question: "What is a Business Email Compromise (BEC) attack?"
+    options:
+      - "When your email password is stolen"
+      - "When attackers impersonate executives to request wire transfers"
+      - "When your email is hacked"
+      - "When you receive too many emails"
+    correct_answer: 1
+    explanation: "BEC attacks involve impersonating executives or trusted parties to trick employees into transferring money or data."
+    
+  - id: phish_007
+    difficulty: basic
+    question: "What should you check before clicking a link in an email?"
+    options:
+      - "The color of the link"
+      - "Hover over the link to see the actual URL"
+      - "The font size"
+      - "Whether it's underlined"
+    correct_answer: 1
+    explanation: "Hovering over a link reveals the actual destination URL, which may differ from the displayed text."
+    
+  - id: phish_008
+    difficulty: intermediate
+    question: "Why might a phishing email use a sense of urgency?"
+    options:
+      - "To be helpful"
+      - "To prevent you from thinking critically"
+      - "Because they're in a hurry"
+      - "To meet a deadline"
+    correct_answer: 1
+    explanation: "Urgency is a manipulation tactic to make victims act quickly without carefully evaluating the request."
+    
+  - id: phish_009
+    difficulty: basic
+    question: "What is the safest way to access your bank account after receiving an email about it?"
+    options:
+      - "Click the link in the email"
+      - "Reply to the email"
+      - "Type the bank's URL directly in your browser"
+      - "Forward the email to a friend"
+    correct_answer: 2
+    explanation: "Always navigate directly to known websites by typing the URL, never through email links."
+    
+  - id: phish_010
+    difficulty: advanced
+    question: "What is 'whaling' in the context of phishing?"
+    options:
+      - "Phishing using whale imagery"
+      - "Targeting high-profile executives"
+      - "Sending very large phishing campaigns"
+      - "Phishing through social media"
+    correct_answer: 1
+    explanation: "Whaling specifically targets high-profile individuals like executives with sophisticated, personalized attacks."
