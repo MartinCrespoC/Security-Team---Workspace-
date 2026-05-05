@@ -222,35 +222,214 @@ cp .env.example .env
 # CENSYS_API_KEY=your_key_here
 ```
 
+## 🔬 ANÁLISIS AVANZADO OBLIGATORIO
+
+### JavaScript Analysis (SIEMPRE ejecutar en apps web)
+```bash
+# Extraer todos los JS de una página
+curl -s URL | grep -oP 'src="[^"]*\.js[^"]*"' | cut -d'"' -f2 | sort -u > js_files.txt
+
+# Analizar JS por secrets/endpoints
+for js in $(cat js_files.txt); do
+  echo "=== $js ===" >> js_analysis.txt
+  curl -s "$js" | grep -iE "(api|key|secret|token|password|auth|endpoint|/api/|/v1/|/v2/)" >> js_analysis.txt
+done
+
+# Buscar endpoints en JS
+curl -s URL | grep -oE '"(/[a-zA-Z0-9_/-]+)"' | sort -u > endpoints.txt
+
+# LinkFinder - Extraer endpoints de JS
+python3 /opt/LinkFinder/linkfinder.py -i URL -o cli
+
+# SecretFinder - Buscar secrets en JS
+python3 /opt/SecretFinder/SecretFinder.py -i URL -o cli
+```
+
+### API Discovery & Testing
+```bash
+# Fuzzing de endpoints API
+ffuf -u URL/api/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/api/api-endpoints.txt -mc 200,201,301,302,401,403
+
+# Fuzzing de versiones API
+ffuf -u URL/api/vFUZZ/users -w <(seq 1 10) -mc all -fc 404
+
+# Probar métodos HTTP
+for method in GET POST PUT DELETE PATCH OPTIONS HEAD; do
+  echo "=== $method ===" && curl -s -X $method -I URL/api/endpoint
+done
+
+# GraphQL Introspection
+curl -s -X POST URL/graphql -H "Content-Type: application/json" -d '{"query":"{ __schema { types { name fields { name } } } }"}'
+
+# Swagger/OpenAPI discovery
+for path in /swagger.json /openapi.json /api-docs /swagger-ui.html /api/swagger.json /v1/swagger.json /v2/api-docs; do
+  curl -s -o /dev/null -w "%{http_code} $path\n" URL$path
+done
+```
+
+### Sensitive Data Discovery
+```bash
+# Buscar archivos sensibles
+ffuf -u URL/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/sensitive-files.txt -mc 200
+
+# Buscar backups
+ffuf -u URL/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/backup-files.txt -mc 200
+
+# Buscar git expuesto
+curl -s URL/.git/HEAD && git-dumper URL/.git ./git-dump
+
+# Buscar .env files
+for path in /.env /.env.local /.env.production /.env.backup /config/.env /app/.env; do
+  curl -s -o /dev/null -w "%{http_code} $path\n" URL$path
+done
+
+# Buscar archivos de configuración
+ffuf -u URL/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/configuration-files.txt -mc 200
+
+# Wayback Machine - URLs históricas con params
+waybackurls domain.com | grep "=" | sort -u > wayback_params.txt
+```
+
+### Authentication Testing
+```bash
+# JWT Analysis
+jwt_tool TOKEN -T  # Tampering tests
+jwt_tool TOKEN -C -d /usr/share/wordlists/rockyou.txt  # Crack secret
+
+# OAuth Testing
+# Probar redirect_uri manipulation, state bypass, token leakage
+
+# Session Testing
+# Verificar: HttpOnly, Secure, SameSite, expiration
+```
+
+### CORS & Headers Analysis
+```bash
+# CORS misconfiguration
+curl -s -I -H "Origin: https://evil.com" URL | grep -i "access-control"
+
+# Security headers check
+curl -sI URL | grep -iE "(strict-transport|content-security|x-frame|x-content-type|x-xss|referrer-policy|permissions-policy)"
+```
+
+### Parameter Discovery
+```bash
+# Arjun - Parameter discovery
+arjun -u URL -m GET POST
+
+# ParamSpider
+python3 paramspider.py -d domain.com
+
+# x8 - Hidden parameters
+x8 -u URL -w /usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt
+```
+
+### Mobile App Indicators (SIEMPRE verificar)
+```bash
+# Buscar indicadores de app móvil
+curl -s URL | grep -iE "(android|ios|app-store|play.google|itunes|mobile|/api/|/app/|/mobile/)" 
+
+# Buscar API endpoints móviles
+ffuf -u URL/FUZZ -w <(echo -e "api\nmobile\napp\nv1\nv2\nrest\ngraphql") -mc 200,301,302,401,403
+
+# Si hay app móvil → descompilar APK/IPA y analizar
+```
+
+## 📊 GENERACIÓN AUTOMÁTICA DE REPORTE PDF
+
+**AL FINALIZAR CUALQUIER ANÁLISIS, EJECUTAR:**
+```bash
+# Generar PDF profesional del reporte
+python3 /home/xroot/Documents/SecurityTeam\ Workspace/lib/generate_pdf_report.py "RUTA_AL_REPORT.md"
+```
+
+**El PDF incluye:**
+- Portada profesional con logo
+- Tabla de contenidos
+- Findings por severidad con colores
+- Tablas estilizadas
+- Headers/footers en cada página
+- Listo para compartir con cliente
+
 ## Reglas Finales
 
 1. **NO PREGUNTAR** - Ejecutar herramientas automáticamente
 2. **DECIDIR** - Elegir la mejor herramienta para cada situación
 3. **ENCADENAR** - Un resultado lleva al siguiente paso
 4. **DOCUMENTAR** - Guardar outputs en la estructura de carpetas
-5. **REPORTAR** - Mostrar hallazgos de forma clara
+5. **REPORTAR** - Generar reporte MD + PDF automáticamente
+6. **ANÁLISIS PROFUNDO** - JS, APIs, secrets, mobile SIEMPRE
 
 ## 🔥 MODO PENTESTING AGRESIVO
 
 **Cuando el usuario proporcione una URL/dominio/app para hackear:**
 
-1. **EJECUTAR PROTOCOLO COMPLETO** sin preguntar (ver PROMPT_PENTESTING.md)
-2. **Fases obligatorias:**
-   - Recon: subfinder + httpx + nuclei
-   - Scan: nmap + nikto + whatweb
-   - Vuln: SQLi + XSS + LFI + SSRF + IDOR
-   - Logic: Race conditions, price manipulation, auth bypass
-   - Creative: Cache poisoning, smuggling, prototype pollution
+### CHECKLIST OBLIGATORIO (ejecutar TODO):
 
-3. **Buscar bugs únicos:**
-   - Valores negativos, null, overflow
-   - Flujos incompletos
-   - Edge cases en APIs
-   - Encadenar vulns (Low + Low = Critical)
+#### 1. RECONNAISSANCE
+- [ ] WHOIS + DNS records
+- [ ] Subdomain enumeration (subfinder, amass, crt.sh)
+- [ ] Port scanning (nmap, masscan)
+- [ ] Technology fingerprinting (whatweb, wappalyzer)
+- [ ] Wayback Machine URLs
 
-4. **ONE-LINER de ataque rápido:**
+#### 2. WEB ANALYSIS
+- [ ] Directory/file fuzzing (ffuf, gobuster)
+- [ ] **JavaScript analysis** (extraer, buscar secrets/endpoints)
+- [ ] **API discovery** (swagger, graphql, endpoints)
+- [ ] Security headers check
+- [ ] CORS testing
+- [ ] Robots.txt, sitemap.xml
+
+#### 3. VULNERABILITY SCANNING
+- [ ] Nuclei (critical, high, medium)
+- [ ] Nikto
+- [ ] SQLMap (si hay params)
+- [ ] XSS testing
+- [ ] SSRF testing
+- [ ] LFI/RFI testing
+
+#### 4. AUTHENTICATION
+- [ ] Login portals enumeration
+- [ ] JWT analysis (si aplica)
+- [ ] Session cookie analysis
+- [ ] OAuth testing (si aplica)
+- [ ] Default credentials
+
+#### 5. SENSITIVE DATA
+- [ ] .git exposure
+- [ ] .env files
+- [ ] Backup files
+- [ ] Config files
+- [ ] Source code disclosure
+- [ ] Error messages info
+
+#### 6. API TESTING
+- [ ] Endpoint enumeration
+- [ ] Method testing (GET, POST, PUT, DELETE)
+- [ ] Parameter fuzzing
+- [ ] Rate limiting
+- [ ] Authentication bypass
+- [ ] IDOR testing
+
+#### 7. MOBILE (si aplica)
+- [ ] Mobile app indicators
+- [ ] API endpoints móviles
+- [ ] APK/IPA analysis
+
+#### 8. REPORT
+- [ ] Generar SECURITY_ASSESSMENT_REPORT.md
+- [ ] **Generar PDF automáticamente**
+- [ ] Incluir evidencia
+- [ ] Recomendaciones
+
+### ONE-LINER de ataque completo:
 ```bash
-TARGET="domain.com" && subfinder -d $TARGET -silent | httpx -silent | nuclei -severity critical,high -o ${TARGET}_vulns.txt
+TARGET="domain.com" && mkdir -p $TARGET && cd $TARGET && \
+subfinder -d $TARGET -silent | httpx -silent | tee hosts.txt | \
+nuclei -severity critical,high,medium -o vulns.txt && \
+echo "Scan complete. Generating report..." && \
+python3 /home/xroot/Documents/SecurityTeam\ Workspace/lib/generate_pdf_report.py report.md
 ```
 
 ## Idioma
