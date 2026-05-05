@@ -208,10 +208,18 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"cve_trendi
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"exploit_search","arguments":{"cve":"CVE-XXXX-XXXX"}}}' | npx -y cve-mcp
 ```
 
-## Variables de Entorno Disponibles
+## Environment Variables
+
+Configure your API keys in `RedTeam/.env` (copy from `.env.example`):
 
 ```bash
-export GOOGLE_GENERATIVE_AI_API_KEY="***REMOVED***"
+# Copy template and add your keys
+cp .env.example .env
+
+# Required keys (get your own):
+# GOOGLE_GENERATIVE_AI_API_KEY=your_key_here
+# SHODAN_API_KEY=your_key_here
+# CENSYS_API_KEY=your_key_here
 ```
 
 ## Reglas Finales
