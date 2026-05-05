@@ -7,7 +7,7 @@
 <h1 align="center">🛡️ Security Team Workspace</h1>
 
 <p align="center">
-  <strong>El primer framework de ciberseguridad con 7 equipos de agentes IA especializados que trabajan en paralelo con contextos aislados</strong>
+  <strong>The first cybersecurity framework with 7 specialized AI agent teams working in parallel with isolated contexts</strong>
 </p>
 
 <p align="center">
@@ -21,19 +21,19 @@
 </p>
 
 <p align="center">
-  <a href="#-características">Características</a> •
-  <a href="#-equipos">Equipos</a> •
-  <a href="#-instalación">Instalación</a> •
-  <a href="#-uso">Uso</a> •
-  <a href="#-reportes">Reportes</a> •
-  <a href="#-compatibilidad">Compatibilidad</a>
+  <a href="#-full-operation-mode">Full Operation</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-teams">Teams</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-reports">Reports</a>
 </p>
 
 ---
 
-## 🎯 ¿Qué es Security Team Workspace?
+## 🎯 What is Security Team Workspace?
 
-**Security Team Workspace** es un framework revolucionario que orquesta **7 equipos de agentes IA especializados** en ciberseguridad. Cada equipo opera con su propio contexto aislado, pero pueden comunicarse y colaborar en tiempo real para ejecutar operaciones de seguridad complejas.
+**Security Team Workspace** is a revolutionary framework that orchestrates **7 specialized AI security teams**. Each team operates with its own isolated context, but they can communicate and collaborate in real-time to execute complex security operations.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -53,119 +53,127 @@
 │   Audit           Zero Trust       Training                                │
 │                                                                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  ✅ Contextos Aislados  ✅ Comunicación Inter-Equipos  ✅ Reportes Unificados │
+│  ✅ Isolated Contexts  ✅ Inter-Team Communication  ✅ Unified Reports      │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
+---
+
 ## 🚀 FULL OPERATION MODE (Auto-Pilot)
 
-**La característica más poderosa:** La IA toma control total y ejecuta operaciones de seguridad completas de forma autónoma.
+**The most powerful feature:** The AI takes full control and executes complete security operations autonomously.
+
+### Natural Language Triggers (Any Language):
+
+| Language | Triggers |
+|----------|----------|
+| **English** | "Full operation against [target]", "Pentest [target]", "Hack [target]", "Attack [target]", "Pwn [target]", "Red team [target]", "Penetration test [target]" |
+| **Spanish** | "Full operation contra [target]", "Pentest de [target]", "Hackea [target]", "Ataca [target]" |
+| **Portuguese** | "Pentest em [target]", "Ataque [target]" |
+| **French** | "Test d'intrusion sur [target]" |
+| **German** | "Penetrationstest auf [target]" |
+
+### Example Execution:
 
 ```
-Usuario: "Full operation contra example.com"
+User: "Pentest example.com"
 
-🤖 IA: ¡Entendido! Tomando control total...
+🤖 AI: Taking full control...
 
-═══ FASE 1: RECONOCIMIENTO ═══
-🔴 [RedTeam] Ejecutando reconocimiento...
+═══ PHASE 1: RECONNAISSANCE ═══
+🔴 [RedTeam] Running reconnaissance...
 > nmap -sV -sC example.com
 > subfinder -d example.com
 > nuclei -u example.com
-[+] 3 subdominios encontrados
-[+] Puertos: 22, 80, 443, 3306
+[+] 3 subdomains found
+[+] Ports: 22, 80, 443, 3306
 
-═══ FASE 2: ANÁLISIS DE VULNERABILIDADES ═══
-🔴 [RedTeam] Escaneando vulnerabilidades...
-[CRITICAL] SQLi encontrado en /api/users?id=
+═══ PHASE 2: VULNERABILITY ANALYSIS ═══
+🔴 [RedTeam] Scanning for vulnerabilities...
+[CRITICAL] SQLi found at /api/users?id=
 
-═══ FASE 3: EXPLOTACIÓN ═══
-🔴 [RedTeam] Explotando SQLi...
+═══ PHASE 3: EXPLOITATION ═══
+🔴 [RedTeam] Exploiting SQLi...
 > sqlmap -u "example.com/api/users?id=1" --dump
-[+] Base de datos dumpeada: 1,547 usuarios
+[+] Database dumped: 1,547 users
 
-═══ FASE 4: ANÁLISIS DEFENSIVO ═══
-🔵 [BlueTeam] Analizando detecciones...
-[!] WAF no bloqueó el ataque
-[!] Sin alertas en logs
+═══ PHASE 4: DEFENSIVE ANALYSIS ═══
+🔵 [BlueTeam] Analyzing detections...
+[!] WAF did not block the attack
+[!] No alerts in logs
 
-═══ FASE 5: VALIDACIÓN ═══
-🟣 [PurpleTeam] Mapeando a MITRE ATT&CK...
+═══ PHASE 5: VALIDATION ═══
+🟣 [PurpleTeam] Mapping to MITRE ATT&CK...
 - T1190: Exploit Public-Facing Application
 - T1059: Command Injection
 
-═══ FASE 6: REPORTE ═══
-📊 Generando mega reporte...
-[+] Reporte: reports/example-com-20240504/
+═══ PHASE 6: REPORT ═══
+📊 Generating mega report...
+[+] Report: reports/example-com-20240504/
 
-✅ OPERACIÓN COMPLETADA
+✅ OPERATION COMPLETED
 ```
 
-### Triggers para Full Operation:
-- `"Full operation contra [target]"`
-- `"Pentest completo de [target]"`
-- `"Hackea [target]"`
-- `"Ataca [target]"`
-- `"Red team full contra [target]"`
+### AI Decision Matrix:
 
-### La IA Decide Autónomamente:
-| Situación | Decisión de la IA |
-|-----------|-------------------|
-| Puerto 80/443 abierto | → Escaneo web completo |
-| SQLi detectado | → Explotación inmediata |
-| Acceso obtenido | → Post-explotación |
-| WAF detectado | → Técnicas de bypass |
-| Sin vulns web | → Pivotar a otros vectores |
+| Situation | AI Decision |
+|-----------|-------------|
+| Port 80/443 open | → Full web scan |
+| SQLi detected | → Immediate exploitation |
+| Access obtained | → Post-exploitation |
+| WAF detected | → Bypass techniques |
+| No web vulns | → Pivot to other vectors |
 
 ---
 
-## ✨ Características
+## ✨ Features
 
-### 🚀 Multi-Agente Paralelo
-- **7 equipos especializados** trabajando simultáneamente
-- **Contextos completamente aislados** por proyecto y equipo
-- **Comunicación segura** entre equipos via `secteam share`
-- **Orquestación inteligente** que asigna tareas al equipo correcto
-- **FULL OPERATION MODE** - La IA ejecuta todo automáticamente
+### 🚀 Multi-Agent Parallel Execution
+- **7 specialized teams** working simultaneously
+- **Completely isolated contexts** per project and team
+- **Secure communication** between teams via `secteam share`
+- **Intelligent orchestration** that assigns tasks to the right team
+- **FULL OPERATION MODE** - AI executes everything automatically
 
-### 🎯 Capacidades Ofensivas (RedTeam)
-- Reconocimiento automatizado (subdominios, puertos, servicios)
-- Explotación de vulnerabilidades (web, network, API)
-- Post-explotación y movimiento lateral
-- Generación de payloads y bypasses
+### 🎯 Offensive Capabilities (RedTeam)
+- Automated reconnaissance (subdomains, ports, services)
+- Vulnerability exploitation (web, network, API)
+- Post-exploitation and lateral movement
+- Payload generation and bypasses
 
-### 🛡️ Capacidades Defensivas (BlueTeam)
-- Detección de amenazas en tiempo real
-- Análisis forense de incidentes
-- Threat hunting proactivo
-- Integración con SIEM/IDS/IPS
+### 🛡️ Defensive Capabilities (BlueTeam)
+- Real-time threat detection
+- Forensic incident analysis
+- Proactive threat hunting
+- SIEM/IDS/IPS integration
 
-### 🔄 Validación Continua (PurpleTeam)
-- Simulación de ataques MITRE ATT&CK
-- Validación de detecciones
-- Gap analysis automatizado
-- Ejercicios de Purple Team
+### 🔄 Continuous Validation (PurpleTeam)
+- MITRE ATT&CK attack simulation
+- Detection validation
+- Automated gap analysis
+- Purple Team exercises
 
-### 📊 Mega Reportes Detallados
-- **Hallazgos por equipo** con severidad y evidencia
-- **CVEs y CWEs** identificados
-- **Exploits y payloads** utilizados
-- **Accesos conseguidos** y credenciales
-- **Secrets expuestos** encontrados
-- **Recomendaciones de remediación**
-- **Timeline de actividades**
+### 📊 Detailed Mega Reports
+- **Findings by team** with severity and evidence
+- **CVEs and CWEs** identified
+- **Exploits and payloads** used
+- **Access obtained** and credentials
+- **Exposed secrets** found
+- **Remediation recommendations**
+- **Activity timeline**
 
 ---
 
-## 🎨 Equipos
+## 🎨 Teams
 
 <table>
 <tr>
 <td width="50%">
 
 ### 🔴 RedTeam - Offensive Security
-**Rol:** Romper todo lo que se pueda romper
+**Role:** Break everything that can be broken
 
-**Capacidades:**
+**Capabilities:**
 - 🔍 Reconnaissance & OSINT
 - 🌐 Web Application Attacks
 - 🔓 Exploitation & Post-Exploitation
@@ -173,16 +181,16 @@ Usuario: "Full operation contra example.com"
 - 🔑 Credential Attacks
 - 🚀 Privilege Escalation
 
-**Herramientas:**
+**Tools:**
 `metasploit` `nmap` `burpsuite` `sqlmap` `nuclei` `ffuf` `gobuster` `hydra` `john` `hashcat`
 
 </td>
 <td width="50%">
 
 ### 🔵 BlueTeam - Defensive Security
-**Rol:** Proteger todo lo que se pueda proteger
+**Role:** Protect everything that can be protected
 
-**Capacidades:**
+**Capabilities:**
 - 🔔 Threat Detection
 - 🚨 Incident Response
 - 🔬 Digital Forensics
@@ -190,7 +198,7 @@ Usuario: "Full operation contra example.com"
 - 🕵️ Threat Hunting
 - 📡 Network Monitoring
 
-**Herramientas:**
+**Tools:**
 `wazuh` `suricata` `zeek` `volatility` `yara` `osquery` `velociraptor` `splunk` `elastic`
 
 </td>
@@ -199,25 +207,25 @@ Usuario: "Full operation contra example.com"
 <td width="50%">
 
 ### 🟣 PurpleTeam - Security Validation
-**Rol:** Validar ataques y detecciones
+**Role:** Validate attacks and detections
 
-**Capacidades:**
+**Capabilities:**
 - ⚔️ Attack Simulation
 - ✅ Detection Validation
 - 📉 Gap Analysis
 - 🗺️ MITRE ATT&CK Mapping
 - 🔄 Continuous Validation
 
-**Herramientas:**
+**Tools:**
 `caldera` `atomic-red-team` `dettect` `attack-navigator` `vectr` `infection-monkey`
 
 </td>
 <td width="50%">
 
 ### 🟢 GreenTeam - DevSecOps
-**Rol:** Seguridad en el desarrollo
+**Role:** Security in development
 
-**Capacidades:**
+**Capabilities:**
 - 🔍 SAST (Static Analysis)
 - 🌐 DAST (Dynamic Analysis)
 - 📦 SCA (Dependency Check)
@@ -225,7 +233,7 @@ Usuario: "Full operation contra example.com"
 - 🏗️ IaC Security
 - 🔐 Secret Detection
 
-**Herramientas:**
+**Tools:**
 `semgrep` `trivy` `gitleaks` `checkov` `snyk` `zap` `nuclei` `grype` `hadolint`
 
 </td>
@@ -234,9 +242,9 @@ Usuario: "Full operation contra example.com"
 <td width="50%">
 
 ### ⚪ WhiteTeam - GRC
-**Rol:** Governance, Risk & Compliance
+**Role:** Governance, Risk & Compliance
 
-**Capacidades:**
+**Capabilities:**
 - 📋 Compliance Audits
 - ⚠️ Risk Assessment
 - 📜 Policy Management
@@ -250,16 +258,16 @@ Usuario: "Full operation contra example.com"
 <td width="50%">
 
 ### 🟡 YellowTeam - Security Architecture
-**Rol:** Diseño seguro desde el inicio
+**Role:** Secure design from the start
 
-**Capacidades:**
+**Capabilities:**
 - 🎯 Threat Modeling (STRIDE)
 - 🏛️ Architecture Review
 - 📋 Security Requirements
 - 🔒 Zero Trust Design
 - 📐 Secure Patterns
 
-**Herramientas:**
+**Tools:**
 `pytm` `threat-dragon` `diagrams` `draw.io` `plantuml`
 
 </td>
@@ -268,16 +276,16 @@ Usuario: "Full operation contra example.com"
 <td colspan="2">
 
 ### 🟠 OrangeTeam - Security Awareness
-**Rol:** El factor humano
+**Role:** The human factor
 
-**Capacidades:**
+**Capabilities:**
 - 🎣 Phishing Simulation
 - 📚 Security Training
 - 📊 Awareness Metrics
 - 🎭 Social Engineering Tests
 - 📈 Campaign Analytics
 
-**Herramientas:**
+**Tools:**
 `gophish` `king-phisher` `set` `beef` `evilginx2`
 
 </td>
@@ -286,64 +294,64 @@ Usuario: "Full operation contra example.com"
 
 ---
 
-## 🚀 Instalación
+## 🚀 Installation
 
-### Requisitos Previos
-- Linux (Kali Linux recomendado)
+### Prerequisites
+- Linux (Kali Linux recommended)
 - Python 3.8+
 - Docker & Docker Compose
 - Git
 
-### Instalación Rápida
+### Quick Installation
 
 ```bash
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/MartinCrespoC/Security-Team---Workspace-.git
 cd Security-Team---Workspace-
 
-# Instalación completa (requiere sudo)
+# Full installation (requires sudo)
 sudo ./install.sh --full
 
-# O instalación interactiva
+# Or interactive installation
 sudo ./install.sh
 ```
 
-### Post-Instalación
+### Post-Installation
 
-⚠️ **IMPORTANTE:** Después de la instalación, configura los archivos `.env` necesarios:
+⚠️ **IMPORTANT:** After installation, configure the required `.env` files:
 
 ```bash
-# Copiar templates de configuración
+# Copy configuration templates
 cp RedTeam/.env.example RedTeam/.env
 cp BlueTeam/.env.example BlueTeam/.env
 cp OrangeTeam/.env.example OrangeTeam/.env
 
-# Editar con tus API keys y configuraciones
+# Edit with your API keys and configurations
 nano RedTeam/.env
 ```
 
-**Variables de entorno comunes:**
-| Variable | Descripción | Equipos |
-|----------|-------------|---------|
-| `SHODAN_API_KEY` | API key de Shodan | RedTeam |
-| `VIRUSTOTAL_API_KEY` | API key de VirusTotal | BlueTeam |
-| `SLACK_WEBHOOK` | Webhook para notificaciones | Todos |
-| `SMTP_SERVER` | Servidor SMTP para phishing | OrangeTeam |
+**Common environment variables:**
+| Variable | Description | Teams |
+|----------|-------------|-------|
+| `SHODAN_API_KEY` | Shodan API key | RedTeam |
+| `VIRUSTOTAL_API_KEY` | VirusTotal API key | BlueTeam |
+| `SLACK_WEBHOOK` | Webhook for notifications | All |
+| `SMTP_SERVER` | SMTP server for phishing | OrangeTeam |
 
 ---
 
-## 📋 Uso
+## 📋 Usage
 
-### Comandos del Orquestador
+### Orchestrator Commands
 
 ```bash
-# Ver estado del workspace
+# View workspace status
 secteam status
 
-# Crear nuevo proyecto con contextos aislados
-secteam new proyecto-cliente-xyz
+# Create new project with isolated contexts
+secteam new client-project-xyz
 
-# Activar contexto de equipo
+# Activate team context
 secteam red      # 🔴 Red Team
 secteam blue     # 🔵 Blue Team
 secteam purple   # 🟣 Purple Team
@@ -352,49 +360,49 @@ secteam white    # ⚪ White Team
 secteam yellow   # 🟡 Yellow Team
 secteam orange   # 🟠 Orange Team
 
-# Compartir hallazgos entre equipos
+# Share findings between teams
 secteam share BlueTeam vulnerability-report.md
 
-# Listar proyectos
-secteam list
+# Generate mega report
+secteam report client-project-xyz
 
-# Generar mega reporte
-secteam report proyecto-cliente-xyz
+# List projects
+secteam list
 ```
 
-### Ejemplo: Operación Completa de Seguridad
+### Example: Complete Security Operation
 
 ```bash
-# 1. Crear proyecto
-secteam new operacion-aurora
+# 1. Create project
+secteam new operation-aurora
 
-# 2. RedTeam: Reconocimiento y explotación
+# 2. RedTeam: Reconnaissance and exploitation
 secteam red
-# La IA ejecutará: nmap, nuclei, sqlmap, etc.
+# AI will execute: nmap, nuclei, sqlmap, etc.
 
-# 3. BlueTeam: Analizar detecciones
+# 3. BlueTeam: Analyze detections
 secteam blue
-# La IA analizará logs y alertas generadas
+# AI will analyze logs and generated alerts
 
-# 4. PurpleTeam: Validar brechas
+# 4. PurpleTeam: Validate gaps
 secteam purple
-# La IA mapeará a MITRE ATT&CK
+# AI will map to MITRE ATT&CK
 
-# 5. Generar mega reporte
-secteam report operacion-aurora --full
+# 5. Generate mega report
+secteam report operation-aurora --full
 ```
 
 ---
 
-## 📊 Sistema de Reportes
+## 📊 Report System
 
-El framework genera **Mega Reportes** detallados con toda la información de la operación:
+The framework generates **Mega Reports** with all operation information:
 
-### Estructura del Reporte
+### Report Structure
 
 ```
 📁 reports/
-└── 📁 operacion-aurora-20240504/
+└── 📁 operation-aurora-20240504/
     ├── 📄 EXECUTIVE_SUMMARY.md
     ├── 📄 FULL_REPORT.md
     ├── 📁 findings/
@@ -416,30 +424,30 @@ El framework genera **Mega Reportes** detallados con toda la información de la 
     └── 📄 REMEDIATION.md
 ```
 
-### Contenido del Mega Reporte
+### Mega Report Contents
 
-| Sección | Contenido |
-|---------|-----------|
-| **Executive Summary** | Resumen ejecutivo para directivos |
-| **Hallazgos** | Vulnerabilidades por severidad (Critical/High/Medium/Low) |
-| **CVEs Identificados** | Lista de CVEs con descripción y CVSS |
-| **CWEs Mapeados** | Debilidades categorizadas por CWE |
-| **Exploits Utilizados** | Código y payloads usados |
-| **Accesos Conseguidos** | Sistemas comprometidos y nivel de acceso |
-| **Credenciales** | Hashes, passwords crackeados, API keys |
-| **Secrets Expuestos** | Tokens, keys, certificados encontrados |
-| **Timeline** | Cronología de la operación |
-| **Equipo Responsable** | Qué equipo descubrió cada hallazgo |
-| **Remediación** | Fixes recomendados con prioridad |
+| Section | Content |
+|---------|---------|
+| **Executive Summary** | High-level summary for executives |
+| **Findings** | Vulnerabilities by severity (Critical/High/Medium/Low) |
+| **CVEs Identified** | List of CVEs with description and CVSS |
+| **CWEs Mapped** | Weaknesses categorized by CWE |
+| **Exploits Used** | Code and payloads used |
+| **Access Obtained** | Compromised systems and access level |
+| **Credentials** | Hashes, cracked passwords, API keys |
+| **Exposed Secrets** | Tokens, keys, certificates found |
+| **Timeline** | Operation chronology |
+| **Responsible Team** | Which team discovered each finding |
+| **Remediation** | Recommended fixes with priority |
 
 ---
 
-## 🤖 Compatibilidad con IDEs
+## 🤖 IDE Compatibility
 
-Este workspace funciona con **cualquier IDE con asistente IA**:
+This workspace works with **any AI-powered IDE**:
 
-| IDE/Asistente | Archivo de Configuración | Estado |
-|---------------|-------------------------|--------|
+| IDE/Assistant | Configuration File | Status |
+|---------------|-------------------|--------|
 | **Windsurf** | `.windsurfrules` | ✅ |
 | **Cursor** | `.cursorrules` | ✅ |
 | **GitHub Copilot** | `.github/copilot-instructions.md` | ✅ |
@@ -447,40 +455,40 @@ Este workspace funciona con **cualquier IDE con asistente IA**:
 | **Gemini** | `.gemini` | ✅ |
 | **Claude** | `CLAUDE.md` | ✅ |
 
-### Uso con IA
+### Using with AI
 
-Simplemente abre el workspace en tu IDE y solicita:
+Simply open the workspace in your IDE and request:
 
 ```
-"Haz un pentest completo de example.com"
-"Analiza estos logs por actividad maliciosa"
-"Escanea el código por vulnerabilidades"
-"Crea un threat model de la aplicación"
-"Genera un reporte de cumplimiento ISO 27001"
+"Pentest example.com"
+"Analyze these logs for malicious activity"
+"Scan the code for vulnerabilities"
+"Create a threat model for the application"
+"Generate an ISO 27001 compliance report"
 ```
 
-La IA identificará automáticamente qué equipo(s) deben actuar y ejecutará las herramientas apropiadas.
+The AI will automatically identify which team(s) should act and execute the appropriate tools.
 
 ---
 
-## 📁 Estructura del Proyecto
+## 📁 Project Structure
 
 ```
 Security-Team---Workspace-/
 │
-├── 🔴 RedTeam/                    # Herramientas ofensivas
+├── 🔴 RedTeam/                    # Offensive tools
 │   ├── tools/
 │   ├── scripts/
 │   ├── wordlists/
 │   └── .env.example
 │
-├── 🔵 BlueTeam/                   # Herramientas defensivas
+├── 🔵 BlueTeam/                   # Defensive tools
 │   ├── rules/
 │   ├── playbooks/
 │   ├── iocs/
 │   └── .env.example
 │
-├── 🟣 PurpleTeam/                 # Validación
+├── 🟣 PurpleTeam/                 # Validation
 │   ├── atomic-tests/
 │   ├── detections/
 │   └── mappings/
@@ -496,7 +504,7 @@ Security-Team---Workspace-/
 │   ├── audits/
 │   └── templates/
 │
-├── 🟡 YellowTeam/                 # Arquitectura
+├── 🟡 YellowTeam/                 # Architecture
 │   ├── threat-models/
 │   ├── architectures/
 │   └── requirements/
@@ -506,55 +514,55 @@ Security-Team---Workspace-/
 │   ├── training/
 │   └── templates/
 │
-├── 📁 .contexts/                  # Configuración de contextos
+├── 📁 .contexts/                  # Context configuration
 │   └── config.json
 │
-├── 📁 .projects/                  # Proyectos (contextos aislados)
+├── 📁 .projects/                  # Projects (isolated contexts)
 │
-├── 📁 .shared/                    # Hallazgos compartidos
+├── 📁 .shared/                    # Shared findings
 │
-├── 📁 .windsurf/workflows/        # Workflows de automatización
+├── 📁 .windsurf/workflows/        # Automation workflows
 │
-├── 📁 reports/                    # Mega reportes generados
+├── 📁 reports/                    # Generated mega reports
 │
-├── 🔧 secteam                     # CLI Orquestador
-├── 🔧 install.sh                  # Instalador unificado
-├── 📄 .windsurfrules              # Config Windsurf
-├── 📄 .cursorrules                # Config Cursor
-├── 📄 .clinerules                 # Config Cline
-├── 📄 .gemini                     # Config Gemini
-├── 📄 CLAUDE.md                   # Config Claude
-├── 📄 LICENSE                     # Licencia
-└── 📄 README.md                   # Este archivo
+├── 🔧 secteam                     # CLI Orchestrator
+├── 🔧 install.sh                  # Unified installer
+├── 📄 .windsurfrules              # Windsurf config
+├── 📄 .cursorrules                # Cursor config
+├── 📄 .clinerules                 # Cline config
+├── 📄 .gemini                     # Gemini config
+├── 📄 CLAUDE.md                   # Claude config
+├── 📄 LICENSE                     # License
+└── 📄 README.md                   # This file
 ```
 
 ---
 
 ## ⚠️ Disclaimer
 
-Este framework está diseñado **exclusivamente para uso autorizado** en:
-- Pruebas de penetración autorizadas
-- Evaluaciones de seguridad contratadas
-- Investigación de seguridad ética
-- Entornos de laboratorio y CTFs
+This framework is designed **exclusively for authorized use** in:
+- Authorized penetration testing
+- Contracted security assessments
+- Ethical security research
+- Lab environments and CTFs
 
-**El uso no autorizado de estas herramientas es ilegal y está estrictamente prohibido.**
-
----
-
-## 📜 Licencia
-
-Este proyecto está bajo la licencia **Security Research License**. Ver [LICENSE](LICENSE) para más detalles.
+**Unauthorized use of these tools is illegal and strictly prohibited.**
 
 ---
 
-## 🤝 Contribuciones
+## 📜 License
 
-Las contribuciones son bienvenidas. Por favor, lee las guías de contribución antes de enviar un PR.
+This project is under the **Security Research License**. See [LICENSE](LICENSE) for details.
 
 ---
 
-## 👨‍💻 Autor
+## 🤝 Contributing
+
+Contributions are welcome. Please read the contribution guidelines before submitting a PR.
+
+---
+
+## 👨‍💻 Author
 
 **Martin Crespo**
 

@@ -1,155 +1,159 @@
 ---
-description: Ejecutar operación de seguridad completa - La IA toma control total y ejecuta todo automáticamente
+description: Execute complete security operation - AI takes full control and executes everything automatically
 ---
 
-# 🛡️ FULL OPERATION - Operación de Seguridad Automatizada
+# 🛡️ FULL OPERATION - Automated Security Operation
 
-Este workflow permite que la IA tome **control total** de una operación de seguridad, ejecutando todas las fases automáticamente y tomando decisiones en tiempo real.
+This workflow allows the AI to take **full control** of a security operation, executing all phases automatically and making real-time decisions.
 
-## Activación
+## Activation
 
-El usuario simplemente dice:
-- "Full operation contra example.com"
-- "Pentest completo de 192.168.1.0/24"
-- "Operación de seguridad full auto"
-- "Ataca y protege example.com"
+User simply says (any language):
+- "Full operation against example.com"
+- "Pentest example.com"
+- "Pentest on 192.168.1.0/24"
+- "Hack testsite.com"
+- "Attack the production API"
+- "Red team client-xyz.com"
+- "Penetration test example.com"
+- "Security assessment of example.com"
 
-## Fases de Ejecución Automática
+## Automatic Execution Phases
 
-### FASE 1: 🔴 RedTeam - Reconocimiento
+### PHASE 1: 🔴 RedTeam - Reconnaissance
 // turbo
 ```bash
 secteam new "$(echo $TARGET | tr '.' '-')-$(date +%Y%m%d)"
 ```
 
-La IA ejecutará automáticamente:
-1. **Reconocimiento pasivo**: whois, DNS, subdominios, certificados
-2. **Reconocimiento activo**: nmap, masscan, puertos y servicios
-3. **Enumeración web**: ffuf, gobuster, directorios y archivos
-4. **Fingerprinting**: tecnologías, versiones, WAF detection
+The AI will automatically execute:
+1. **Passive reconnaissance**: whois, DNS, subdomains, certificates
+2. **Active reconnaissance**: nmap, masscan, ports and services
+3. **Web enumeration**: ffuf, gobuster, directories and files
+4. **Fingerprinting**: technologies, versions, WAF detection
 
-### FASE 2: 🔴 RedTeam - Análisis de Vulnerabilidades
-La IA ejecutará:
-1. **Escaneo automatizado**: nuclei, nikto, wapiti
-2. **Análisis manual**: endpoints interesantes, parámetros
-3. **Identificación de CVEs**: searchsploit, vulners
-4. **Priorización**: ordenar por criticidad y explotabilidad
+### PHASE 2: 🔴 RedTeam - Vulnerability Analysis
+The AI will execute:
+1. **Automated scanning**: nuclei, nikto, wapiti
+2. **Manual analysis**: interesting endpoints, parameters
+3. **CVE identification**: searchsploit, vulners
+4. **Prioritization**: order by criticality and exploitability
 
-### FASE 3: 🔴 RedTeam - Explotación
-La IA decidirá y ejecutará:
-1. **Selección de exploits**: basado en vulnerabilidades encontradas
-2. **Preparación de payloads**: adaptar al objetivo
-3. **Ejecución controlada**: intentar explotación
-4. **Documentación**: capturar evidencia de cada intento
+### PHASE 3: 🔴 RedTeam - Exploitation
+The AI will decide and execute:
+1. **Exploit selection**: based on found vulnerabilities
+2. **Payload preparation**: adapt to target
+3. **Controlled execution**: attempt exploitation
+4. **Documentation**: capture evidence of each attempt
 
-### FASE 4: 🔴 RedTeam - Post-Explotación (si hay acceso)
-1. **Enumeración interna**: usuarios, permisos, red
-2. **Escalación de privilegios**: buscar vías
-3. **Movimiento lateral**: identificar otros sistemas
-4. **Persistencia**: documentar métodos (no implementar sin autorización)
+### PHASE 4: 🔴 RedTeam - Post-Exploitation (if access obtained)
+1. **Internal enumeration**: users, permissions, network
+2. **Privilege escalation**: find paths
+3. **Lateral movement**: identify other systems
+4. **Persistence**: document methods (don't implement without authorization)
 
-### FASE 5: 🔵 BlueTeam - Análisis de Detecciones
-La IA analizará:
-1. **Logs generados**: qué se detectó del ataque
-2. **Alertas SIEM**: correlación de eventos
-3. **Gaps de detección**: qué NO se detectó
-4. **IOCs**: indicadores de compromiso identificados
+### PHASE 5: 🔵 BlueTeam - Detection Analysis
+The AI will analyze:
+1. **Generated logs**: what was detected from the attack
+2. **SIEM alerts**: event correlation
+3. **Detection gaps**: what was NOT detected
+4. **IOCs**: identified indicators of compromise
 
-### FASE 6: 🟣 PurpleTeam - Validación
-La IA mapeará:
-1. **MITRE ATT&CK**: técnicas utilizadas
-2. **Detecciones vs Ataques**: matriz de cobertura
-3. **Gaps identificados**: brechas de seguridad
-4. **Recomendaciones**: mejoras de detección
+### PHASE 6: 🟣 PurpleTeam - Validation
+The AI will map:
+1. **MITRE ATT&CK**: techniques used
+2. **Detections vs Attacks**: coverage matrix
+3. **Identified gaps**: security breaches
+4. **Recommendations**: detection improvements
 
-### FASE 7: 🟢 GreenTeam - Análisis de Código (si aplica)
-1. **SAST**: análisis estático del código
-2. **Secrets**: búsqueda de credenciales hardcodeadas
-3. **Dependencias**: vulnerabilidades en librerías
-4. **IaC**: misconfigurations en infraestructura
+### PHASE 7: 🟢 GreenTeam - Code Analysis (if applicable)
+1. **SAST**: static code analysis
+2. **Secrets**: search for hardcoded credentials
+3. **Dependencies**: vulnerabilities in libraries
+4. **IaC**: infrastructure misconfigurations
 
-### FASE 8: 📊 Generación de Mega Reporte
+### PHASE 8: 📊 Mega Report Generation
 // turbo
 ```bash
 secteam report "$PROJECT_NAME" --full
 ```
 
-## Decisiones Autónomas de la IA
+## AI Autonomous Decisions
 
-La IA tomará decisiones basándose en:
+The AI will make decisions based on:
 
-| Situación | Decisión |
+| Situation | Decision |
 |-----------|----------|
-| Puerto 80/443 abierto | Ejecutar escaneo web completo |
-| Puerto 22 abierto | Intentar enumeración SSH, buscar credenciales |
-| Puerto 3306/5432 abierto | Probar credenciales por defecto |
-| Vulnerabilidad crítica encontrada | Intentar explotación inmediata |
-| WAF detectado | Aplicar técnicas de bypass |
-| Acceso obtenido | Proceder con post-explotación |
-| Sin vulnerabilidades web | Pivotar a otros vectores |
+| Port 80/443 open | Execute full web scan |
+| Port 22 open | Attempt SSH enumeration, search for credentials |
+| Port 3306/5432 open | Test default credentials |
+| Critical vulnerability found | Attempt immediate exploitation |
+| WAF detected | Apply bypass techniques |
+| Access obtained | Proceed with post-exploitation |
+| No web vulnerabilities | Pivot to other vectors |
 
-## Ejemplo de Ejecución
+## Execution Example
 
 ```
-Usuario: "Full operation contra testsite.com"
+User: "Pentest testsite.com"
 
-IA: 🛡️ Iniciando FULL OPERATION contra testsite.com
+AI: 🛡️ Starting FULL OPERATION against testsite.com
     
-    📁 Creando proyecto: testsite-com-20240504
+    📁 Creating project: testsite-com-20240504
     
-    ═══ FASE 1: RECONOCIMIENTO ═══
-    🔴 [RedTeam] Ejecutando reconocimiento pasivo...
+    ═══ PHASE 1: RECONNAISSANCE ═══
+    🔴 [RedTeam] Executing passive reconnaissance...
     > whois testsite.com
     > dig testsite.com ANY
     > subfinder -d testsite.com
     
-    🔴 [RedTeam] Ejecutando reconocimiento activo...
+    🔴 [RedTeam] Executing active reconnaissance...
     > nmap -sV -sC -p- testsite.com
-    [+] Puertos encontrados: 22, 80, 443, 3306
+    [+] Ports found: 22, 80, 443, 3306
     
-    ═══ FASE 2: ANÁLISIS DE VULNERABILIDADES ═══
-    🔴 [RedTeam] Escaneando vulnerabilidades...
+    ═══ PHASE 2: VULNERABILITY ANALYSIS ═══
+    🔴 [RedTeam] Scanning vulnerabilities...
     > nuclei -u https://testsite.com -t cves/
-    [CRITICAL] CVE-2024-XXXX detectado en /api/upload
+    [CRITICAL] CVE-2024-XXXX detected at /api/upload
     
-    ═══ FASE 3: EXPLOTACIÓN ═══
-    🔴 [RedTeam] Intentando explotar CVE-2024-XXXX...
-    > [payload ejecutado]
-    [+] ¡Acceso obtenido! Shell como www-data
+    ═══ PHASE 3: EXPLOITATION ═══
+    🔴 [RedTeam] Attempting to exploit CVE-2024-XXXX...
+    > [payload executed]
+    [+] Access obtained! Shell as www-data
     
-    ═══ FASE 4: POST-EXPLOTACIÓN ═══
-    🔴 [RedTeam] Enumerando sistema...
+    ═══ PHASE 4: POST-EXPLOITATION ═══
+    🔴 [RedTeam] Enumerating system...
     > id && whoami && uname -a
     > cat /etc/passwd
-    [+] Usuario mysql encontrado con acceso a DB
+    [+] mysql user found with DB access
     
-    ═══ FASE 5: ANÁLISIS DEFENSIVO ═══
-    🔵 [BlueTeam] Analizando detecciones...
-    [!] El WAF no bloqueó el payload
-    [!] No hay alertas en SIEM para este ataque
+    ═══ PHASE 5: DEFENSIVE ANALYSIS ═══
+    🔵 [BlueTeam] Analyzing detections...
+    [!] WAF did not block the payload
+    [!] No SIEM alerts for this attack
     
-    ═══ FASE 6: VALIDACIÓN ═══
-    🟣 [PurpleTeam] Mapeando a MITRE ATT&CK...
+    ═══ PHASE 6: VALIDATION ═══
+    🟣 [PurpleTeam] Mapping to MITRE ATT&CK...
     - T1190: Exploit Public-Facing Application
     - T1059: Command and Scripting Interpreter
     - T1083: File and Directory Discovery
     
-    ═══ FASE 7: REPORTE ═══
-    📊 Generando mega reporte...
-    [+] Reporte guardado en: reports/testsite-com-20240504/
+    ═══ PHASE 7: REPORT ═══
+    📊 Generating mega report...
+    [+] Report saved to: reports/testsite-com-20240504/
     
-    ✅ FULL OPERATION COMPLETADA
+    ✅ FULL OPERATION COMPLETED
     
-    Resumen:
-    - Vulnerabilidades críticas: 1
-    - Accesos obtenidos: 1 (www-data)
-    - Gaps de detección: 3
-    - Recomendaciones: 5
+    Summary:
+    - Critical vulnerabilities: 1
+    - Access obtained: 1 (www-data)
+    - Detection gaps: 3
+    - Recommendations: 5
 ```
 
-## Comandos que la IA Puede Ejecutar
+## Commands the AI Can Execute
 
-### Reconocimiento
+### Reconnaissance
 ```bash
 nmap -sV -sC -p- $TARGET
 masscan -p1-65535 $TARGET --rate=1000
@@ -159,7 +163,7 @@ whatweb $TARGET
 wafw00f $TARGET
 ```
 
-### Escaneo de Vulnerabilidades
+### Vulnerability Scanning
 ```bash
 nuclei -u $TARGET -t cves/ -t vulnerabilities/
 nikto -h $TARGET
@@ -167,22 +171,22 @@ wapiti -u $TARGET
 sqlmap -u "$TARGET/page?id=1" --batch
 ```
 
-### Explotación
+### Exploitation
 ```bash
 msfconsole -q -x "use exploit/...; set RHOSTS $TARGET; run"
 searchsploit $SERVICE $VERSION
 ```
 
-### Análisis Defensivo
+### Defensive Analysis
 ```bash
 grep -r "attack_pattern" /var/log/
 suricata -r capture.pcap
 yara -r rules/ samples/
 ```
 
-## Notas Importantes
+## Important Notes
 
-1. **Autorización**: Este workflow asume autorización total
-2. **Scope**: La IA respetará el alcance definido
-3. **Documentación**: Todo se documenta automáticamente
-4. **Reversibilidad**: No se realizan cambios destructivos sin confirmación
+1. **Authorization**: This workflow assumes full authorization
+2. **Scope**: The AI will respect the defined scope
+3. **Documentation**: Everything is documented automatically
+4. **Reversibility**: No destructive changes without confirmation
