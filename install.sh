@@ -699,16 +699,15 @@ finalize_installation() {
     echo -e "${CYAN}[*] Installing secteam command globally...${NC}"
     chmod +x "$WORKSPACE_ROOT/secteam"
     
-    # Create symlink in /usr/local/bin (requires sudo)
+    # Create symlink in /usr/local/bin
     if [ -w /usr/local/bin ] || [ "$EUID" -eq 0 ]; then
         ln -sf "$WORKSPACE_ROOT/secteam" /usr/local/bin/secteam
         echo -e "${GREEN}[✓] secteam installed globally - use 'secteam' from anywhere${NC}"
     else
-        # Try with sudo
         if sudo ln -sf "$WORKSPACE_ROOT/secteam" /usr/local/bin/secteam 2>/dev/null; then
             echo -e "${GREEN}[✓] secteam installed globally - use 'secteam' from anywhere${NC}"
         else
-            echo -e "${YELLOW}[!] Could not install globally. Use: sudo ln -sf $WORKSPACE_ROOT/secteam /usr/local/bin/secteam${NC}"
+            echo -e "${YELLOW}[!] Run: sudo ln -sf $WORKSPACE_ROOT/secteam /usr/local/bin/secteam${NC}"
         fi
     fi
     
