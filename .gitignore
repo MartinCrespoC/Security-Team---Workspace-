@@ -194,3 +194,10 @@ OrangeTeam/captured/
 # - Workflows de Windsurf
 # - Archivos de reglas para IDEs
 # ═══════════════════════════════════════════════════════════════════════════════
+
+# Operations data - never commit
+RedTeam/operations/
+BlueTeam/operations/
+PurpleTeam/operations/
+*/operations/
+reports/*
